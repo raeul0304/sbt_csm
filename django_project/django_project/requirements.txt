@@ -1,0 +1,3 @@
+#버전
+postgres
+- port : 5432
