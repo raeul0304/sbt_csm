@@ -1,0 +1,38 @@
+2025-03-27 09:05:32,412 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:05:34,027 - chatbot_ui - INFO - Response status code: 200
+2025-03-27 09:05:34,027 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:05:32 GMT', 'server': 'uvicorn', 'content-length': '202', 'content-type': 'application/json'}
+2025-03-27 09:05:34,027 - chatbot_ui - INFO - Response content: {"response":{"output":"{\n    \"option\": \"FERT202\",\n    \"m20change\": \"-8.0\",\n    \"natural_language_response\": \"FERT202의 판매수량을 8% 감소시켰습니다.\"\n}","reference_url":[]}}
+2025-03-27 09:05:34,027 - chatbot_ui - INFO - FASTAPI 응답 내용 : 
+2025-03-27 09:05:34,027 - chatbot_ui - INFO - 업데이트할 답변: {'output': '{\n    "option": "FERT202",\n    "m20change": "-8.0",\n    "natural_language_response": "FERT202의 판매수량을 8% 감소시켰습니다."\n}', 'reference_url': []}
+2025-03-27 09:09:54,189 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:09:57,105 - chatbot_ui - INFO - Response status code: 500
+2025-03-27 09:09:57,106 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:09:53 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'}
+2025-03-27 09:09:57,106 - chatbot_ui - INFO - Response content: {"detail":"Internal server error"}
+2025-03-27 09:13:09,840 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:13:11,348 - chatbot_ui - INFO - Response status code: 500
+2025-03-27 09:13:11,348 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:13:09 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'}
+2025-03-27 09:13:11,348 - chatbot_ui - INFO - Response content: {"detail":"Internal server error"}
+2025-03-27 09:16:12,642 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:16:14,231 - chatbot_ui - INFO - Response status code: 500
+2025-03-27 09:16:14,231 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:16:12 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'}
+2025-03-27 09:16:14,231 - chatbot_ui - INFO - Response content: {"detail":"Internal server error"}
+2025-03-27 09:17:11,922 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:17:13,446 - chatbot_ui - INFO - Response status code: 500
+2025-03-27 09:17:13,446 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:17:11 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'}
+2025-03-27 09:17:13,446 - chatbot_ui - INFO - Response content: {"detail":"Internal server error"}
+2025-03-27 09:21:21,124 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:21:22,626 - chatbot_ui - INFO - Response status code: 500
+2025-03-27 09:21:22,626 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:21:20 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'}
+2025-03-27 09:21:22,626 - chatbot_ui - INFO - Response content: {"detail":"Internal server error"}
+2025-03-27 09:23:00,995 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:23:02,373 - chatbot_ui - INFO - Response status code: 200
+2025-03-27 09:23:02,373 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:23:00 GMT', 'server': 'uvicorn', 'content-length': '107', 'content-type': 'application/json'}
+2025-03-27 09:23:02,373 - chatbot_ui - INFO - Response content: {"response":{"output":"{\n    \"option\": \"FERT103\",\n    \"m20change\": \"2.0\"\n}","reference_url":[]}}
+2025-03-27 09:23:02,373 - chatbot_ui - INFO - FASTAPI 응답 내용 : 
+2025-03-27 09:23:02,373 - chatbot_ui - INFO - 업데이트할 답변: {'output': '{\n    "option": "FERT103",\n    "m20change": "2.0"\n}', 'reference_url': []}
+2025-03-27 09:25:14,251 - chatbot_ui - INFO - Sending payload:
+2025-03-27 09:25:15,854 - chatbot_ui - INFO - Response status code: 200
+2025-03-27 09:25:15,854 - chatbot_ui - INFO - Response headers: {'date': 'Thu, 27 Mar 2025 00:25:14 GMT', 'server': 'uvicorn', 'content-length': '201', 'content-type': 'application/json'}
+2025-03-27 09:25:15,854 - chatbot_ui - INFO - Response content: {"response":{"output":"{\n    \"option\": \"FERT103\",\n    \"m20change\": \"2.0\",\n    \"natural_language_response\": \"FERT103의 판매수량을 2% 증가시켰습니다.\"\n}","reference_url":[]}}
+2025-03-27 09:25:15,855 - chatbot_ui - INFO - FASTAPI 응답 내용 : 
+2025-03-27 09:25:15,855 - chatbot_ui - INFO - 업데이트할 답변: {'output': '{\n    "option": "FERT103",\n    "m20change": "2.0",\n    "natural_language_response": "FERT103의 판매수량을 2% 증가시켰습니다."\n}', 'reference_url': []}
