@@ -18,9 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from email_service.views import generate_and_save_emails, get_emails, hello
+from email_service.rpa_email import RPA_Email
 
 urlpatterns = [
     path("", hello, name="hello"),
     path("generate-emails/", generate_and_save_emails, name="generate_emails"),
     path("get-emails/", get_emails, name="get_emails"),
+    path("rpa_email/", RPA_Email.rpa_fetch_email, name="rpa_email")
 ]
