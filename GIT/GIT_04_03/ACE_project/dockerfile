@@ -1,0 +1,21 @@
+# Python 3.9를 포함한 베이스 이미지 사용
+FROM python:3.9
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 기본 패키지 설치
+RUN apt-get update && apt-get install -y \
+    portaudio19-dev ffmpeg  \
+    && rm -rf /var/lib/apt/lists/*
+# 필요한 패키지들을 설치
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+
+# 애플리케이션 소스 복사
+COPY ./ ./
+
+CMD ["streamlit", "run", "frontend/ACE_Streamlit.py", "--server.port=31234", "--server.address=0.0.0.0"]
+
+

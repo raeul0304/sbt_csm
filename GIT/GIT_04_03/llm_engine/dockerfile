@@ -1,0 +1,25 @@
+# Python 3.9를 포함한 베이스 이미지 사용
+FROM python:3.10
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 필요한 패키지들을 설치
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+
+# 애플리케이션 소스 복사
+COPY ./ ./
+
+# 환경 변수 설정 (분산 학습 관련 설정)
+ENV MASTER_ADDR=localhost
+ENV MASTER_PORT=29500
+ENV RANK=0
+ENV WORLD_SIZE=1
+
+# FastAPI 서버 실행 (포트 8000)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8787"]
+
+# 컨테이너가 노출할 포트 설정
+# EXPOSE 8001

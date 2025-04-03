@@ -1,0 +1,22 @@
+pandas
+numpy
+plotly
+openpyxl
+streamlit
+markdown
+# folium
+# streamlit_folium
+streamlit-aggrid
+base64
+# 디자인 요소
+streamlit-antd-components
+st-star-rating
+
+
+#STT
+transformers
+sounddevice
+torch
+#도커
+fastapi==0.112.0
+uvicorn[standard]
