@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "hwp": {
+      "command": "python",
+      "args": ["C:\\Users\\USER\\vscodeProjects\\central_power_project\\mcp\\hwp_mcp\\hwp_mcp\\hwp_mcp_stdio_server.py"],
+      "options": {
+        "creationflags": "CREATE_NEW_CONSOLE"
+      }
+    }
+  }
+}

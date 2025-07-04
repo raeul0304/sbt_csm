@@ -1,0 +1,590 @@
+2025-05-14 11:16:47,704 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 11:16:47,786 - hwp-mcp-stdio-server - ERROR - Failed to import HwpController: No module named 'win32com'
+2025-05-14 11:16:47,789 - hwp-mcp-stdio-server - ERROR - Could not find HwpController in any path: No module named 'win32com'
+2025-05-14 11:19:34,047 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 11:19:34,050 - hwp-mcp-stdio-server - ERROR - Failed to import HwpController: No module named 'win32com'
+2025-05-14 11:19:34,052 - hwp-mcp-stdio-server - ERROR - Could not find HwpController in any path: No module named 'win32com'
+2025-05-14 12:57:14,612 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 12:57:14,618 - hwp-mcp-stdio-server - ERROR - Failed to import HwpController: No module named 'win32com'
+2025-05-14 12:57:14,622 - hwp-mcp-stdio-server - ERROR - Could not find HwpController in any path: No module named 'win32com'
+2025-05-14 13:05:53,430 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 13:05:53,437 - hwp-mcp-stdio-server - ERROR - Failed to import HwpController: No module named 'win32com'
+2025-05-14 13:05:53,439 - hwp-mcp-stdio-server - ERROR - Could not find HwpController in any path: No module named 'win32com'
+2025-05-14 13:12:03,727 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 13:12:03,731 - hwp-mcp-stdio-server - ERROR - Failed to import HwpController: No module named 'win32com'
+2025-05-14 13:12:03,734 - hwp-mcp-stdio-server - ERROR - Could not find HwpController in any path: No module named 'win32com'
+2025-05-14 13:32:44,532 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 13:32:44,631 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 13:32:44,637 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 13:32:44,659 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 13:32:44,683 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 13:32:49,221 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 13:32:49,221 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 13:33:33,807 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 13:34:07,382 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 13:34:07,425 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 13:34:07,427 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 13:34:07,441 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 13:34:07,462 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 13:34:12,266 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 13:34:12,266 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 13:36:12,340 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 13:36:13,123 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 13:47:16,262 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 13:47:16,327 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 13:47:16,329 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 13:47:16,346 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 13:47:16,361 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 13:47:22,584 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 13:47:22,584 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 13:49:22,634 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 13:49:23,584 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 13:50:05,744 - hwp-mcp-stdio-server - ERROR - Error running server: unhandled errors in a TaskGroup (1 sub-exception)
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\hwp-mcp\hwp-mcp\hwp_mcp_stdio_server.py", line 1265, in <module>
+  |     mcp.run(transport="stdio")
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\fastmcp\server.py", line 230, in run
+  |     anyio.run(self.run_stdio_async)
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_core\_eventloop.py", line 74, in run
+  |     return async_backend.run(func, args, {}, backend_options)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2310, in run
+  |     return runner.run(wrapper())
+  |            ^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\anaconda3\Lib\asyncio\runners.py", line 118, in run
+  |     return self._loop.run_until_complete(task)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\anaconda3\Lib\asyncio\base_events.py", line 687, in run_until_complete
+  |     return future.result()
+  |            ^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2298, in wrapper
+  |     return await func(*args)
+  |            ^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\fastmcp\server.py", line 588, in run_stdio_async
+  |     async with stdio_server() as (read_stream, write_stream):
+  |                ^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\anaconda3\Lib\contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\stdio.py", line 87, in stdio_server
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\stdio.py", line 83, in stdout_writer
+    |     await stdout.flush()
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_core\_fileio.py", line 140, in flush
+    |     return await to_thread.run_sync(self._fp.flush)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    |     result = context.run(func, *args)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    | OSError: [Errno 22] Invalid argument
+    +------------------------------------
+2025-05-14 14:19:52,084 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:19:52,371 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:19:52,374 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:19:52,396 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:19:52,420 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:19:57,694 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 14:19:57,694 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 14:21:57,722 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 14:29:27,397 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:29:27,629 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:29:27,630 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:29:27,643 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:29:27,657 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:29:32,234 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 14:29:32,234 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 14:30:28,036 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 14:30:42,782 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:30:42,816 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:30:42,816 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:30:42,830 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:30:42,842 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:30:47,028 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 14:30:47,028 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 14:32:47,051 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 14:32:47,784 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 14:41:15,418 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:41:15,480 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:41:15,481 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:41:15,496 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:41:15,517 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:45:27,810 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:45:27,841 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:45:27,842 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:45:27,855 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:45:27,865 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:46:06,075 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:46:06,106 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:46:06,107 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:46:06,120 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:46:06,132 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:48:11,683 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-14 14:48:11,713 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-14 14:48:11,714 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-14 14:48:11,726 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-14 14:48:11,735 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-14 14:48:20,647 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-14 14:48:20,648 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-14 14:49:05,215 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-14 14:49:06,054 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 11:07:43,103 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 11:07:43,554 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 11:07:43,556 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 11:07:43,574 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 11:07:43,589 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 11:07:47,298 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 11:07:47,298 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 11:09:48,059 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 11:09:48,883 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:02:26,833 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:02:27,124 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:02:27,127 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:02:27,146 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:02:27,166 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 13:03:52,548 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:03:52,580 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:03:52,582 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:03:52,595 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:03:52,608 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 13:03:56,135 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:03:56,135 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 13:05:56,172 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 13:05:57,003 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:12:50,381 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:12:50,413 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:12:50,414 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:12:50,427 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:12:50,440 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 13:12:54,179 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:12:54,180 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 13:13:43,413 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 13:15:26,835 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:15:26,889 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:15:26,891 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:15:26,912 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:15:26,926 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 13:15:30,598 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:15:30,599 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 13:16:11,592 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 13:21:56,636 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:21:56,675 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:21:56,678 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:21:56,703 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:21:56,715 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 13:22:01,492 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:22:01,492 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 13:24:01,528 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 13:24:16,284 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:24:16,763 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:24:16,765 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:24:16,799 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:24:39,962 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:24:40,020 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:24:40,021 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:24:40,039 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 13:24:40,058 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 13:24:43,335 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 13:24:43,335 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 13:26:43,365 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 13:26:43,374 - hwp-mcp-stdio-server - ERROR - Error running server: unhandled errors in a TaskGroup (1 sub-exception)
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\hwp-mcp\hwp-mcp\hwp_mcp_stdio_server.py", line 1265, in <module>
+  |     mcp.run(transport="stdio")
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\fastmcp\server.py", line 230, in run
+  |     anyio.run(self.run_stdio_async)
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_core\_eventloop.py", line 74, in run
+  |     return async_backend.run(func, args, {}, backend_options)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2310, in run
+  |     return runner.run(wrapper())
+  |            ^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\anaconda3\Lib\asyncio\runners.py", line 118, in run
+  |     return self._loop.run_until_complete(task)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\anaconda3\Lib\asyncio\base_events.py", line 687, in run_until_complete
+  |     return future.result()
+  |            ^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2298, in wrapper
+  |     return await func(*args)
+  |            ^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\fastmcp\server.py", line 588, in run_stdio_async
+  |     async with stdio_server() as (read_stream, write_stream):
+  |                ^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\anaconda3\Lib\contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\stdio.py", line 87, in stdio_server
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\mcp\server\stdio.py", line 83, in stdout_writer
+    |     await stdout.flush()
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_core\_fileio.py", line 140, in flush
+    |     return await to_thread.run_sync(self._fp.flush)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\USER\vscodeProjects\mcp-env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    |     result = context.run(func, *args)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    | OSError: [Errno 22] Invalid argument
+    +------------------------------------
+2025-05-15 13:51:55,364 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 13:51:55,403 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 13:51:55,405 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 13:51:55,443 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:07:26,170 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:07:26,214 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:07:26,216 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:07:26,233 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:07:26,247 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 14:07:30,209 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:07:30,209 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 14:08:09,897 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 14:08:10,707 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:23:39,201 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:23:39,287 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:23:39,289 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:23:39,334 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:24:14,952 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:24:15,024 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:24:15,025 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:24:15,053 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:24:15,074 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 14:24:18,633 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:24:18,634 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 14:25:04,350 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 14:25:05,151 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:34:38,971 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:34:39,032 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:34:39,033 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:34:39,058 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:34:58,476 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:34:58,523 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:34:58,524 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:34:58,537 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:34:58,551 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 14:35:01,760 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:35:01,761 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 14:35:39,601 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 14:35:40,432 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:37:44,220 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:37:44,284 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:37:44,285 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:37:44,313 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:38:11,909 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:38:11,969 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:38:11,971 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:38:11,993 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:38:12,010 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 14:38:15,330 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:38:15,330 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 14:38:55,397 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 14:38:56,215 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 14:52:03,542 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 14:52:03,587 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 14:52:03,588 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 14:52:03,626 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 14:52:03,626 - hwp-mcp-stdio-server - ERROR - Error running server: Unknown transport: http
+Traceback (most recent call last):
+  File "C:\hwp-mcp\hwp-mcp\hwp_mcp_stdio_server.py", line 1265, in <module>
+    mcp.run(transport="http")
+  File "C:\Users\USER\anaconda3\Lib\site-packages\mcp\server\fastmcp\server.py", line 226, in run
+    raise ValueError(f"Unknown transport: {transport}")
+ValueError: Unknown transport: http
+2025-05-15 15:15:49,633 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:15:49,674 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:15:49,675 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:15:49,711 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:16:53,796 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:16:53,844 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:16:53,845 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:16:53,880 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:19:37,867 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:19:37,894 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:19:37,894 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:19:37,926 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:19:37,926 - hwp-mcp-stdio-server - ERROR - Error running server: FastMCP.run() got an unexpected keyword argument 'host'
+Traceback (most recent call last):
+  File "C:\hwp-mcp\hwp-mcp\hwp_mcp_stdio_server.py", line 1265, in <module>
+    mcp.run(
+TypeError: FastMCP.run() got an unexpected keyword argument 'host'
+2025-05-15 15:21:21,238 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:21:21,275 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:21:21,276 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:21:21,307 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:27:54,045 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:27:54,112 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:27:54,113 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:27:54,139 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:27:54,152 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 15:27:58,922 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 15:27:58,922 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 15:30:19,662 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 15:46:31,862 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:46:32,091 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:46:32,092 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:46:32,122 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:46:32,138 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 15:46:38,177 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 15:46:38,178 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 15:47:22,381 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 15:47:23,278 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 15:51:08,792 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 15:51:09,062 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 15:51:09,064 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 15:51:09,085 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 15:51:09,098 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 15:51:13,673 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 15:51:13,673 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 15:51:56,105 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 16:31:15,109 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 16:31:15,142 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 16:31:15,144 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 16:31:15,166 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 16:31:15,178 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 16:31:21,351 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 16:31:21,352 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 16:32:05,816 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 16:35:51,045 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 16:35:51,084 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 16:35:51,086 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 16:35:51,139 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 16:35:51,157 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 16:35:54,935 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 16:35:54,936 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 16:37:05,586 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 16:42:40,306 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 16:42:40,418 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 16:42:40,419 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 16:42:40,441 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 16:42:40,451 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 16:42:45,234 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 16:42:45,234 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 16:43:25,638 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-15 16:47:57,032 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-15 16:47:57,073 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-15 16:47:57,076 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-15 16:47:57,104 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-15 16:47:57,115 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-15 16:48:00,553 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-15 16:48:00,554 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-15 16:48:42,201 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 09:05:20,813 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:05:21,115 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:05:21,117 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:05:21,144 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:05:21,158 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:12:53,704 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:12:53,767 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:12:53,769 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:12:53,813 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:12:53,831 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:15:33,639 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:15:33,865 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:15:33,867 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:15:33,888 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:15:33,900 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:16:53,688 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:16:53,718 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:16:53,720 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:16:53,741 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:16:53,753 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:19:20,171 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:19:20,216 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:19:20,218 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:19:20,242 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:19:20,254 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:21:22,103 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:21:22,134 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:21:22,137 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:21:22,157 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:21:22,168 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:23:04,398 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:23:04,428 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:23:04,430 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:23:04,451 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:23:04,462 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:27:36,637 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:27:36,668 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:27:36,670 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:27:36,689 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:27:36,701 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:45:04,562 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:45:04,599 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:45:04,601 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:45:04,623 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:45:04,636 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:51:59,764 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:51:59,798 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:51:59,799 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:51:59,820 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:51:59,830 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:52:07,418 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 09:52:07,418 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 09:52:56,415 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 09:54:57,705 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:54:57,744 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:54:57,745 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:54:57,765 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:54:57,777 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:55:41,834 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:55:41,865 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:55:41,866 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:55:41,889 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:55:41,900 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 09:55:48,069 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 09:55:48,069 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 09:56:41,020 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 09:59:55,391 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 09:59:55,463 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 09:59:55,466 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 09:59:55,517 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 09:59:55,539 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:02:58,973 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:02:59,034 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:02:59,036 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:02:59,081 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:02:59,103 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:35:48,555 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:35:48,630 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:35:48,632 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:35:48,681 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:35:48,705 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:37:03,785 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:37:03,872 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:37:03,875 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:37:03,945 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:37:03,972 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:37:52,311 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:37:52,383 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:37:52,386 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:37:52,448 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:37:52,471 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:37:58,587 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 10:37:58,587 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 10:38:51,076 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 10:53:18,889 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:53:18,982 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:53:18,985 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:53:19,057 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:53:19,084 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:54:13,359 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:54:13,421 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:54:13,426 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:54:13,486 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:54:13,508 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:55:11,976 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:55:12,082 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:55:12,085 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:55:12,140 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:55:12,167 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:55:13,675 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 10:57:16,241 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:57:16,330 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:57:16,333 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:57:16,414 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:57:16,461 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:57:17,936 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 10:57:17,937 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 10:58:03,877 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 10:59:45,935 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 10:59:46,026 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 10:59:46,030 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 10:59:46,076 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 10:59:46,098 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 10:59:48,052 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 10:59:48,053 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 11:00:34,209 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 11:03:32,082 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 11:03:32,187 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 11:03:32,192 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 11:03:32,271 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 11:03:32,321 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 11:03:34,226 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 11:03:34,228 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 11:04:17,492 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 11:08:11,245 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 11:08:11,397 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 11:08:11,401 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 11:08:11,515 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 11:08:11,572 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 11:08:13,323 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 11:08:13,323 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 11:09:04,027 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-05-30 11:12:18,903 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-05-30 11:12:19,064 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-05-30 11:12:19,066 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-05-30 11:12:19,173 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-05-30 11:12:19,238 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-05-30 11:12:20,651 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-05-30 11:12:20,652 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-05-30 11:13:04,572 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-06-05 11:29:06,828 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 11:29:07,082 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 11:29:07,085 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 11:29:07,115 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 11:29:07,130 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 11:29:13,132 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-06-05 11:29:13,133 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-06-05 11:29:58,594 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-06-05 13:05:39,011 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 13:05:39,064 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 13:05:39,066 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 13:05:39,090 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 13:05:39,103 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 13:05:45,711 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-06-05 13:05:45,712 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-06-05 13:06:24,608 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-06-05 13:07:35,456 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 13:07:35,492 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 13:07:35,494 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 13:07:35,523 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 13:07:35,537 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 13:07:46,795 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-06-05 13:07:46,796 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-06-05 13:08:23,869 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-06-05 13:29:19,190 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 13:29:19,226 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 13:29:19,227 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 13:29:19,254 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 13:29:19,265 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 13:31:43,067 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 13:31:43,109 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 13:31:43,111 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 13:31:43,136 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 13:31:43,154 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 13:32:56,036 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 13:32:56,077 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 13:32:56,079 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 13:32:56,107 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 13:32:56,124 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 13:33:08,916 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-06-05 13:33:08,916 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-06-05 13:33:46,459 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program
+2025-06-05 13:37:43,601 - hwp-mcp-stdio-server - INFO - FastMCP successfully imported
+2025-06-05 13:37:43,638 - hwp-mcp-stdio-server - INFO - HwpController imported successfully
+2025-06-05 13:37:43,640 - hwp-mcp-stdio-server - INFO - HwpTableTools imported successfully
+2025-06-05 13:37:43,667 - hwp-mcp-stdio-server - INFO - Starting HWP MCP stdio server
+2025-06-05 13:37:43,679 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2025-06-05 13:37:45,246 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2025-06-05 13:37:45,247 - hwp-mcp-stdio-server - INFO - Creating HwpController instance...
+2025-06-05 13:38:23,316 - hwp-mcp-stdio-server - ERROR - Failed to connect to HWP program

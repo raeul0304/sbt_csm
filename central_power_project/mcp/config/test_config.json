@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "youtube-data-mcp-server": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@icraft2170/youtube-data-mcp-server",
+        "--key",
+        "892e78d1-64fb-47b2-bb35-565a0c5f52b1",
+        "--profile",
+        "gleaming-pheasant-uC8Vm1"
+      ]
+    }
+  }
+}
