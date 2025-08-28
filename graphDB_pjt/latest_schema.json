@@ -1,0 +1,186 @@
+{
+  "table_name": "KNA1",
+  "nodes": [
+    "Customer",
+    "Address",
+    "City",
+    "Country",
+    "Contact",
+    "TaxInfo",
+    "Lifecycle",
+    "Extra"
+  ],
+  "relationships": [
+    {
+      "from": "Customer",
+      "to": "Address",
+      "type": "HAS_ADDRESS",
+      "properties": []
+    },
+    {
+      "from": "Address",
+      "to": "City",
+      "type": "IN_CITY",
+      "properties": []
+    },
+    {
+      "from": "City",
+      "to": "Country",
+      "type": "PART_OF",
+      "properties": []
+    },
+    {
+      "from": "Customer",
+      "to": "Contact",
+      "type": "HAS_CONTACT",
+      "properties": []
+    },
+    {
+      "from": "Customer",
+      "to": "TaxInfo",
+      "type": "HAS_TAX_INFO",
+      "properties": []
+    },
+    {
+      "from": "Customer",
+      "to": "Lifecycle",
+      "type": "HAS_LIFECYCLE",
+      "properties": []
+    },
+    {
+      "from": "Customer",
+      "to": "Extra",
+      "type": "HAS_EXTRA",
+      "properties": []
+    }
+  ],
+  "primary_key": {
+    "Customer": "KUNNR",
+    "Address": "ADRNR",
+    "City": "concatenatedFields",
+    "Country": "LAND1",
+    "Contact": "concatenatedFields",
+    "TaxInfo": "concatenatedFields",
+    "Lifecycle": "concatenatedFields",
+    "Extra": "concatenatedFields"
+  },
+  "node_properties": {
+    "Customer": [
+      "KUNNR",
+      "NAME1",
+      "NAME2",
+      "SORTL",
+      "KTOKD",
+      "LIFNR"
+    ],
+    "Address": [
+      "ADRNR",
+      "STRAS",
+      "PSTLZ",
+      "REGIO",
+      "ORT01",
+      "ORT02"
+    ],
+    "City": [
+      "ORT01"
+    ],
+    "Country": [
+      "LAND1"
+    ],
+    "Contact": [
+      "TELF1",
+      "TELFX",
+      "TELF2"
+    ],
+    "TaxInfo": [
+      "STCD1",
+      "STCD2",
+      "STCD3",
+      "STCD5",
+      "STCEG"
+    ],
+    "Lifecycle": [
+      "ERDAT",
+      "ERNAM",
+      "LOEVM",
+      "AEDAT",
+      "USNAM"
+    ],
+    "Extra": [
+      "MANDT",
+      "MCOD1",
+      "MCOD2",
+      "MCOD3",
+      "ANRED",
+      "BBBNR",
+      "BBSNR",
+      "BUBKZ",
+      "SPRAS",
+      "STKZA",
+      "LZONE",
+      "VBUND",
+      "DEAR2",
+      "UMSAT",
+      "UMJAH",
+      "JMZAH",
+      "JMJAH",
+      "STKZN",
+      "UMSA1",
+      "WERKS",
+      "DUEFL",
+      "HZUOR",
+      "FITYP",
+      "CASSD",
+      "J_1KFREPRE",
+      "J_1KFTBUS",
+      "J_1KFTIND",
+      "UPTIM",
+      "DEAR6",
+      "RIC",
+      "LEGALNAT",
+      "_VSO_R_PALHGT",
+      "_VSO_R_I_NO_LYR",
+      "_VSO_R_ULD_SIDE",
+      "_VSO_R_LOAD_PREF",
+      "DUNS",
+      "J_1IEXRN",
+      "J_1IPANNO",
+      "PSPNR",
+      "J_3GSTDMON",
+      "J_3GSTDTAG",
+      "J_3GTAGMON",
+      "J_3GVMONAT",
+      "J_3GEMINBE",
+      "J_3GFMGUE",
+      "J_3GZUSCHUE"
+    ]
+  },
+  "used_fields": [
+    "KUNNR",
+    "NAME1",
+    "NAME2",
+    "SORTL",
+    "KTOKD",
+    "LIFNR",
+    "ADRNR",
+    "STRAS",
+    "PSTLZ",
+    "REGIO",
+    "ORT01",
+    "ORT02",
+    "LAND1",
+    "TELF1",
+    "TELFX",
+    "TELF2",
+    "STCD1",
+    "STCD2",
+    "STCD3",
+    "STCD5",
+    "STCEG",
+    "ERDAT",
+    "ERNAM",
+    "LOEVM",
+    "AEDAT",
+    "USNAM"
+  ]
+}

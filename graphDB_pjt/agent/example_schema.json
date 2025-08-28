@@ -1,0 +1,179 @@
+[
+    {
+        "table_name": "ProductStructure",
+        "schema_explanation": "Defines how a product is composed of other materials. Captures component hierarchy.",
+        "nodes": [
+            {
+            "label": "Material",
+            "primary_key": "parent_id",
+            "description": "Product or component material",
+            "properties": ["parent_id", "material_id", "name"]
+            },
+            {
+            "label": "Material",
+            "primary_key": "component_id",
+            "description": "Product or component material",
+            "properties": ["component_id", "name"]
+            }
+        ],
+        "relationships": [
+            {
+            "from": "Material",
+            "to": "Material",
+            "type": "MADE_OF",
+            "description": "Indicates that a material is composed of another material (BOM structure)"
+            }
+        ]
+    },
+    {
+        "table_name": "ProductSupplier",
+        "schema_explanation": "Maps materials to the plant where they are produced. Represents sourcing/production location.",
+        "nodes": [
+            {
+            "label": "Material",
+            "primary_key": "material_id",
+            "description": "Product or component material",
+            "properties": ["material_id", "name"]
+            },
+            {
+            "label": "Plant",
+            "primary_key": "plant_id",
+            "description": "Production facility or factory",
+            "properties": ["plant_id", "name"]
+            }
+        ],
+        "relationships": [
+            {
+            "from": "Material",
+            "to": "Plant",
+            "type": "PRODUCED_IN",
+            "description": "Links a material to the plant where it is produced (sourcing mapping)"
+            }
+        ]
+    },
+    {
+        "table_name": "PlantLocation",
+        "schema_explanation": "Captures the geographic location of plants and cities. Used for regional analysis.",
+        "nodes": [
+            {
+            "label": "Plant",
+            "primary_key": "plant_id",
+            "description": "Production site or factory",
+            "properties": ["plant_id", "name"]
+            },
+            {
+            "label": "City",
+            "primary_key": "city_id",
+            "description": "Urban area where the plant is located",
+            "properties": ["city_id", "name"]
+            }
+        ],
+        "relationships": [
+            {
+            "from": "Plant",
+            "to": "City",
+            "type": "LOCATED_IN",
+            "description": "Links a plant to the city it is located in"
+            }
+        ]
+    },
+    {
+        "table_name": "GeoLocation",
+        "schema_explanation": "",
+        "nodes": [
+            {
+                "label" : "City",
+                "primary_key" : "city_id",
+                "description" : "City name",
+                "properties": ["city_id"]
+            },
+            {
+                "label" : "Country",
+                "primary_key" : "country_id",
+                "description" : "Country name",
+                "properties": ["country_id"]
+            }
+        ],
+        "relationships": [
+            {
+                "from" : "City",
+                "to" : "Country",
+                "type": "PART_OF",
+                "description" : "Links a city to its country"
+            }
+        ]
+    },
+    {
+        "table_name": "PersonalNetwork",
+        "schema_explanation": "Models social and professional relationships between people, as well as hobbies.",
+        "nodes": [
+            {
+            "label": "Person",
+            "primary_key": "person_id",
+            "description": "Individual person",
+            "properties": ["id", "name", "job"]
+            },
+            {
+            "label": "Hobby",
+            "primary_key": "hobby_id",
+            "description": "Leisure activity",
+            "properties": ["hobby_id", "name"]
+            },
+            {
+            "label": "Address",
+            "primary_key": "address_id",
+            "description": "Which city the person lives",
+            "properties": ["city_id", "name"]
+            }
+        ],
+        "relationships": [
+            { "from": "Person", "to": "Person", "type": "FRIEND_OF" },
+            { "from": "Person", "to": "Person", "type": "COWORKER_OF" },
+            { "from": "Person", "to": "Person", "type": "RELATIVE_OF" },
+            { "from": "Person", "to": "Person", "type": "FAMILY_OF" },
+            { "from": "Person", "to": "Hobby", "type": "ENJOYS" },
+            { "from": "Person", "to": "Address", "type": "LIVES_IN" }
+        ]
+    },
+    {
+        "table_name": "EnergyUsagePlan",
+        "schema_explanation": "This schema captures the planned energy usage for different facilities over time. It supports energy monitoring, forecasting, and cost analysis.",
+        "nodes": [
+            {
+            "label": "Material",
+            "primary_key": "material_id",
+            "properties": ["material_id", "name"],
+            "description": "A building or site where energy is consumed."
+            },
+            {
+            "label": "TimePeriod",
+            "primary_key": "period_id",
+            "properties": ["year", "quarter"],
+            "description": "Time frame for the energy usage plan."
+            },
+            {
+            "label": "UsagePlan",
+            "primary_key": "plan_id",
+            "properties": ["kwh", "unit_cost", "estimated_cost"],
+            "description": "Planned energy usage in kWh, unit price, and total cost."
+            }
+        ],
+        "relationships": [
+            {
+            "from": "Material",
+            "to": "UsagePlan",
+            "type": "HAS_USAGE_PLAN",
+            "properties": [],
+            "description": "Links a facility to its energy usage plan."
+            },
+            {
+            "from": "UsagePlan",
+            "to": "TimePeriod",
+            "type": "FOR_PERIOD",
+            "properties": [],
+            "description": "Specifies when the usage plan is applied."
+            }
+        ]
+    }
+
+]

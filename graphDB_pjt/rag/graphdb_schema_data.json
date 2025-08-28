@@ -1,0 +1,363 @@
+{"schemas": [
+  {
+    "table_name": "KNA1",
+    "schema_explanation": "이 스키마는 SAP 고객(KNA1) 마스터 데이터를 중심으로 고객의 위치, 분류, 세금, 생애주기 정보를 통합 모델링합니다. 이를 통해 고객 기반 지리 추론, 규제 준수 여부 판단, 고객 세분화 등의 작업이 가능합니다. — This schema centers on SAP customer (KNA1) master data and integrates related attributes such as location, classification, tax, and lifecycle. It supports reasoning tasks focused on customer geolocation, compliance, and segmentation.",
+    "nodes": [
+      {
+        "label": "Customer",
+        "primary_key": "KUNNR",
+        "description": "이 노드는 SAP 시스템의 핵심 사업체를 나타내며, 일반적으로 고객 또는 비즈니스 파트너입니다. 'KUNNR'(고객 번호), 'NAME1/2'(이름), 'ANRED'(호칭) 등의 필드를 포함하며, 고객 개체를 식별하고 설명합니다. 판매, 재무, 컴플라이언스, 물류 전반의 중심 엔터티로 작동하며, 주소, 세금, 생애주기, 분류 데이터와의 연결을 위한 중심점 역할을 합니다. Represents a core business entity in the SAP system, typically a client or business partner. It includes fields like 'KUNNR' (customer number), 'NAME1/2' (name fields), and 'ANRED' (salutation), which together identify and describe a business relationship entity. This node serves as the central anchor for all customer-related operations across sales, finance, compliance, and logistics. Its attributes enable segmentation, filtering, personalization, and are essential for linking to address, tax, lifecycle, and type classification data.",
+        "properties": ["KUNNR", "NAME1", "NAME2", "SORTL", "MCOD1", "MCOD2", "MCOD3", "ANRED"]
+      },
+      {
+        "label": "Address",
+        "primary_key": "ADRNR",
+        "description": "고객(사업체)의 물리적 위치 정보를 나타내는 노드입니다. 'STRAS'(도로명), 'PSTLZ'(우편번호), 'ADRNR'(주소 번호) 등의 필드를 포함하며, 위치 기반 연산의 기준점으로 작동합니다. This node captures the physical location data associated with a customer. It contains fields like 'STRAS' (street), 'PSTLZ' (postal code), and 'ADRNR' (address number), which allow granular mapping of customer location. It acts as the primary geolocation anchor point in downstream logic.",
+        "properties": ["ADRNR", "STRAS", "PSTLZ"]
+      },
+      {
+        "label": "City",
+        "primary_key": "ORT01",
+        "description": "고객/사업체가 위치한 도시를 나타냅니다. This node represents the city where the customer or production site is located. It includes fields such as 'ORT01' (city name) and 'REGIO' (region code), which provide granular location data. These fields enable geographic grouping, regional segmentation, route optimization, and are essential for any downstream task. City-level entities serve as hubs for connecting address data, production, and distribution activities.",      
+        "properties": ["ORT01", "REGIO"]
+      },
+      {
+        "label": "Country",
+        "primary_key": "LAND1",
+        "description": "고객/사업체의 국가 정보를 나타냅니다. This node identifies the country context of an address or business entity using field 'LAND1'. Country-level granularity supports tasks such as international compliance, legal jurisdiction, tax policy enforcement, localization, and currency settings. It enables reasoning at a macro-regional scale and is often used in workflows involving international trade, financial reporting, or global policy application.",
+        "properties": ["LAND1"]
+      },
+      {
+        "label": "TaxInfo",
+        "primary_key": "concatenatedFields",
+        "description": "고객/사업체의 세금 식별 정보를 나타냅니다. Captures tax identification attributes for the customer, such as 'STCD2' (VAT number) and 'STCD5' (other tax ID). These identifiers are crucial for tasks involving cross-border invoicing, fiscal validation, integration with tax authorities",
+        "properties": ["STCD2", "STCD5"]
+      },
+      {
+        "label": "Lifecycle",
+        "primary_key": "concatenatedFields",
+        "description": "고객 레코드의 생성일, 생성자, 삭제 여부 등 생애주기 관련 정보를 담고 있습니다. 이는 고객 활성화 여부 판단, 아카이빙 또는 자동화된 상태 기반 처리 로직에 사용됩니다. Encodes lifecycle metadata of a customer record, including creation date ('ERDAT'), creator ('ERNAM'), and deletion flag ('DUEFL'). This node allows reasoning over temporal aspects such as customer onboarding, account aging, and eligibility for lifecycle-based processes (e.g., reactivation, archiving, or deactivation). It enables both historical filtering and status-aware logic in automation or governance tasks.",
+        "properties": ["ERDAT", "ERNAM", "DUEFL"]
+      },
+      {
+        "label": "CustomerType",
+        "primary_key": "KTOKD",
+        "description": "고객을 유형 또는 계정 그룹으로 분류하는 속성입니다. Represents the customer classification or account group using field 'KTOKD'. This classification is used to differentiate customer behavior, assign business rules, drive pricing logic, eligibility conditions, or CRM segmentation. It supports branch-like logic in reasoning tasks such as approval workflows, entitlement computation, or user experience tailoring.",
+        "properties": ["KTOKD"]
+      },
+      {
+        "label": "Extra",
+        "primary_key": "KUNNR",
+        "description": "다른 노드와 명시적으로 연결되지 않는 레거시 필드 모음입니다. 대부분의 추론 흐름에서는 제외되며, 데이터 완전성 확보를 위한 목적으로 보존됩니다. Represents a collection of low-signal or legacy fields retained for completeness. These fields are not semantically connected to other nodes and are excluded from most reasoning flows.",
+        "properties": [
+          "MANDT", "BBBNR", "BBSNR", "BUBKZ", "UMSAT", "UMJAH", "JMZAH", "JMJAH", "UMSA1", "HZUOR",
+          "J_1KFREPRE", "J_1KFTBUS", "J_1KFTIND", "UPTIM", "RIC", "LEGALNAT", "_VSO_R_PALHGT", "_VSO_R_I_NO_LYR",
+          "_VSO_R_ULD_SIDE", "_VSO_R_LOAD_PREF", "PSPNR", "J_3GSTDMON", "J_3GSTDTAG", "J_3GTAGMON", "J_3GVMONAT",
+          "J_3GEMINBE", "J_3GFMGUE", "J_3GZUSCHUE"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Customer",
+        "to": "Address",
+        "type": "HAS_ADDRESS",
+        "properties": ["PSTLZ"],
+        "description": "고객을 주소 노드에 연결하며, 우편번호와 도로명 필드를 기반으로 위치를 식별합니다. 이는 배송 최적화, 관할 식별, 지역 분석 등에 활용됩니다. Links a customer to their associated physical address using fields like 'STRAS' and 'PSTLZ'. This spatial relationship is essential for tasks involving geolocation (e.g., delivery optimization, weather data lookup), jurisdiction (e.g., tax zone identification), and location-sensitive analytics. It enables downstream reasoning where customer operations depend on specific geographic anchors."
+      },
+      {
+        "from": "Address",
+        "to": "City",
+        "type": "IN_CITY",
+        "properties": ["ORT01"],
+        "description": "주소 노드를 도시 노드에 연결하며, 도시 코드 'ORT01'을 사용합니다. 이 연결은 도시 단위 집계, 지역 서비스 판단 등에 활용됩니다. Maps a specific address to its corresponding city, using city-level code 'ORT01'. This relationship supports aggregation at the urban level, enabling city-wide pattern recognition, environmental impact assessments, or localized service eligibility (e.g., regional offers, urban tax zones)."
+      },
+      {
+        "from": "City",
+        "to": "Country",
+        "type": "PART_OF",
+        "properties": ["LAND1"],
+        "description": "도시 노드를 국가 노드에 연결하여 지리적 계층을 구성합니다. 국가 기반 세금 정책, 법규 필터링, 통화 설정 등의 논리에 활용됩니다. Connects a city node to its parent country, allowing hierarchical geospatial modeling. This enables any country-specific reasoning, such as currency setting, legal jurisdiction, tax laws, or global compliance filtering. It's a foundation for macro-regional analysis or filtering logic."
+      },
+      {
+        "from": "Customer",
+        "to": "TaxInfo",
+        "type": "HAS_TAX_INFO",
+        "properties": [],
+        "description": "고객의 세금 식별 정보를 연결하는 관계입니다. 이 정보는 세금 신고 및 규제 준수를 위한 용도로만 사용되며, 제품 또는 거래 관계에는 사용되지 않습니다. — Connects a customer's tax identifier (e.g., VAT number) for regulatory filing only. Not used for product, pricing, or logistics purposes."
+      },
+      {
+        "from": "Customer",
+        "to": "Lifecycle",
+        "type": "HAS_LIFECYCLE",
+        "properties": [],
+        "description": "고객/사업체의 생애주기 데이터를 연결하며, 계정 나이 필터링, 비활성 계정 처리, 자동화된 데이터 수명 정책에 활용됩니다. Provides temporal context to a customer record, enabling logic like filtering by account age, detecting recent changes, or handling stale/inactive accounts. Used in automation, data retention enforcement, and audit or governance pipelines."
+      },
+      {
+        "from": "Customer",
+        "to": "CustomerType",
+        "type": "HAS_TYPE",
+        "properties": ["KTOKD"],
+        "description": "고객을 사전 정의된 유형으로 분류합니다. 이는 할인, 접근 권한, 승인 정책 등에서 유형별 규칙 적용에 사용됩니다. — Classifies the customer into a predefined type for rule-based applications such as discounts, access control, and approvals."
+      },
+      {
+        "from": "Customer",
+        "to": "Extra",
+        "type": "HAS_EXTRA",
+        "properties": [],
+        "description": "Just a link between the anchor node and unused fields"
+      }
+    ],
+    "used_fields": [
+      "KUNNR", "NAME1", "NAME2", "SORTL", "MCOD1", "MCOD2", "MCOD3", "ANRED",
+      "ADRNR", "STRAS", "PSTLZ", "ORT01", "REGIO", "LAND1",
+      "STCD2", "STCD5", "ERDAT", "ERNAM", "DUEFL", "KTOKD"
+    ]
+  },
+  {
+    "table_name": "MAST",
+    "schema_explanation": "이 스키마는 완성품(또는 반제품)을 구성하는 BOM(자재 명세서) 상의 최상위 구조를 정의합니다. 각 제품(MATNR)은 고유한 BOM 번호(STLNR)를 가지며, 이를 통해 제품이 어떤 하위 자재들로 구성되는지를 탐색할 수 있는 진입점이 됩니다. 이 구조는 완성품 기준 역추적, 제품 계층 분석, 구조 비교 등 조립 기반 reasoning에 필수적입니다. — This schema defines the top-level BOM structure for finished or semi-finished products. Each material number (MATNR) is linked to a unique BOM ID (STLNR), which serves as the entry point for traversing its component breakdown. This enables reasoning over product decomposition, variant comparison, and dependency tracing.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "STLNR",
+        "description": "이 노드는 BOM에서 완성품 또는 반제품으로 정의되는 상위 자재를 나타냅니다. 'MATNR'은 자재 번호이며, 'STLNR'은 해당 자재 구조를 참조하는 BOM 번호입니다. 이 노드는 STPO와의 연결을 통해 구성 요소를 탐색하는 출발점이 됩니다. — This node represents a top-level product or semi-finished material as defined in the BOM. 'MATNR' is the material number, and 'STLNR' is the BOM ID used to link to component structures in STPO."
+      }
+    ],
+    "relationships": [],
+    "used_fields": ["STLNR", "MATNR"]
+  },
+  {
+    "table_name": "STPO",
+    "schema_explanation": "이 스키마는 완성품 또는 반제품(STLNR)과 그것을 구성하는 하위 자재(IDNRK) 간의 조립 구조를 정의합니다. 각 구성 요소는 수량(MENGE), 단위(MEINS), 위치(STPOZ) 등의 속성을 가지며, 이 구조를 따라 다단계로 자재를 추적할 수 있습니다. 이 구조는 완성품이 어떤 원재료 또는 중간재로 구성되어 있는지를 분석하고, 구성 요소의 재사용이나 누락 여부를 탐색하는 데 활용됩니다. — This schema defines the hierarchical BOM structure linking parent materials (STLNR) to their components (IDNRK). Each relationship carries metadata such as quantity (MENGE), unit (MEINS), and position (STPOZ). It supports recursive traversal to understand what raw materials or intermediates are used in a given product.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "STLNR",
+        "description": "이 노드는 상위 자재(완성품 또는 반제품)를 나타냅니다. 'STLNR'은 MAST 테이블의 BOM 번호와 동일하며, 여러 하위 자재(IDNRK)를 포함합니다. — This node represents a parent material (finished or semi-finished product). 'STLNR' corresponds to a BOM ID from the MAST table and contains one or more components (IDNRK)."
+      },
+      {
+        "label": "Material",
+        "primary_key": "IDNRK",
+        "description": "이 노드는 BOM에 포함된 원재료 또는 구성품을 나타냅니다. 'IDNRK'는 자재 번호이며, 여러 상위 자재에 재사용될 수 있어 구성 공통성 분석이나 재고 최적화에 활용됩니다. — This node represents a component such as a raw material or part used in the BOM. 'IDNRK' is the material number and may be reused across multiple parent structures."
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Material",
+        "to": "Material",
+        "type": "HAS_COMPONENT",
+        "properties": ["MENGE", "MEINS", "STPOZ"],
+        "description": "이 관계는 상위 자재(STLNR)가 하위 자재(IDNRK)를 어떤 수량(MENGE), 단위(MEINS), 순서(STPOZ)로 포함하는지를 정의합니다. 이를 통해 제품의 구성 구조를 순차적으로 추적하거나 누락된 자재를 파악할 수 있습니다. — This relationship defines how a parent material (STLNR) includes a component (IDNRK) with quantity (MENGE), unit (MEINS), and position (STPOZ). It enables sequential tracking of product structure and identification of missing materials."
+      }
+    ],
+    "used_fields": ["STLNR", "IDNRK", "MENGE", "MEINS", "STPOZ"]
+  },
+  
+  {
+    "table_name": "EINA",
+    "schema_explanation": "이 스키마는 구매 자재(IDNRK)를 공급하는 공급처(LIFNR), 공급처의 도시(ORT01)를 연결합니다. 이는 공급처-자재 관계 분석, 중복 공급처 탐색, 지역 기반 공급 전략 수립에 활용됩니다. This schema maps procured materials to their suppliers and supplier locations. It is useful for analyzing supplier-material dependencies, sourcing redundancy, and regional supplier distributions.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "IDNRK",
+        "description": "제품을 만들기 위한 (하위) 자재를 나타냅니다. 'IDNRK' 필드는 STPO의 구성 자재와 일치하며, 공급자와 연결되는 기준 자재입니다. Denotes a material that is externally procured. The 'IDNRK' field represents the material number, which aligns with the component materials used in STPO. This node anchors the connection between material and supplier."
+      },
+      {
+        "label": "Supplier",
+        "primary_key": "LIFNR",
+        "description": "자재를 공급하는 공급처를 나타냅니다. 'LIFNR'은 공급처 코드 또는 이름이며, 자재별 공급처를 식별하고 분석하는 데 사용됩니다. Represents the supplier providing the material. 'LIFNR' is the supplier identifier or name, used to group materials by vendor and analyze sourcing patterns."
+      },
+      {
+        "label": "City",
+        "primary_key": "ORT01",
+        "description": "공급처의 지리적 위치를 나타내는 도시입니다. 'ORT01' 필드는 도시명을 저장하며, 지역 클러스터링이나 공급 전략 최적화에 사용됩니다. Represents the geographic location of the supplier. The 'ORT01' field stores the city name where the supplier is based. This supports regional clustering and distribution analysis."
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Material",
+        "to": "Supplier",
+        "type": "SUPPLIED_BY",
+        "properties": [],
+        "description": "자재(IDNRK)가 특정 공급자(LIFNR)에 의해 공급됨을 나타냅니다. 공급자-자재 관계를 추적하고 분석하는 데 사용됩니다. Indicates that a material ('IDNRK') is sourced from a supplier ('LIFNR'). This relationship allows tracing the origin of materials and analyzing sourcing dependencies."
+      },
+      {
+        "from": "Supplier",
+        "to": "City",
+        "type": "LOCATED_IN",
+        "properties": [],
+        "description": "공급자(LIFNR)를 특정 도시(ORT01)에 매핑합니다. 지역별 공급자 그룹핑과 비교 분석에 사용됩니다. Connects each supplier ('LIFNR') to a specific city ('ORT01'). Enables grouping of suppliers by region and comparing location-based supplier networks."
+      }
+    ],
+    "used_fields": ["IDNRK", "LIFNR", "ORT01"]
+  },  
+  {
+    "table_name": "MAST_STPO",
+    "schema_explanation": "이 스키마는 SAP BOM 구조를 통합적으로 모델링한 것입니다. MAST의 상위 자재(MATNR, STLNR)와 STPO의 하위 자재(IDNRK) 간의 구성 관계를 나타내며, 제품 구조를 탐색하고 다단계 조립을 추적하는 데 유용합니다. — This schema represents a unified BOM structure from MAST and STPO tables, showing how a finished/semi-finished material (MATNR) is composed of lower-level components (IDNRK) with associated quantities and positions.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "STLNR",
+        "description": "완제품 또는 반제품을 나타내며 BOM 구조의 상위 자재로 사용됩니다. — Represents the parent material in the BOM, typically a finished or semi-finished product.",
+        "properties": ["MATNR", "STLNR"]
+      },
+      {
+        "label": "Material",
+        "primary_key": "IDNRK",
+        "description": "BOM에 포함된 하위 자재 또는 부품을 나타냅니다. — Represents component materials or parts included in the BOM structure.",
+        "properties": ["IDNRK"]
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Material",
+        "to": "Material",
+        "type": "HAS_COMPONENT",
+        "properties": ["MENGE", "MEINS", "STPOZ"],
+        "description": "상위 자재(STLNR)가 하위 자재(IDNRK)를 어떤 수량(MENGE), 단위(MEINS), 위치(STPOZ)로 포함하는지를 나타냅니다. — Represents how a parent material includes components with quantity, unit, and position information."
+      }
+    ],
+    "used_fields": ["MATNR", "STLNR", "IDNRK", "MENGE", "MEINS", "STPOZ"]
+  },
+  {
+    "table_name": "MAST_STPO_EINA",
+    "schema_explanation": "이 스키마는 SAP BOM 데이터(MAST, STPO)와 자재-공급자 매핑 정보(EINA)를 통합하여, 제품(Material) 간의 구성 관계와 각 자재의 조달처(Supplier), 위치(City)를 연결합니다. 하나의 완제품(MATNR)은 BOM 번호(STLNR)를 통해 구성 자재(IDNRK)를 참조하며, 각 자재는 특정 공급자(LIFNR)를 통해 조달되고, 해당 공급자의 도시 정보(ORT01)가 함께 제공됩니다. 이 구조는 제품-부품 관계 탐색, 부품별 공급자 조회, 공급처 지역 분포 분석 등에 활용됩니다. — This schema integrates BOM data (MAST, STPO) with procurement mapping (EINA), linking product-to-component structures and supplier information. Each finished or semi-finished product is broken down into components via STLNR-IDNRK mappings, and each component is mapped to its vendor and the vendor's city, enabling exploration of material breakdowns and procurement structures.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "STLNR",
+        "description": "BOM 상의 상위 자재를 나타냅니다. MATNR은 자재 번호이며, STLNR은 해당 자재의 BOM 구조를 식별하는 키입니다. 이 노드는 구성 자재들을 포함하는 완제품 또는 반제품을 표현합니다. — This node represents the parent material in the BOM. 'MATNR' is the material number and 'STLNR' identifies the BOM structure. It refers to finished or semi-finished products that contain component materials.",
+        "properties": ["MATNR", "STLNR"]
+      },
+      {
+        "label": "Material",
+        "primary_key": "IDNRK",
+        "description": "BOM에서 상위 자재에 포함되는 구성 자재를 나타냅니다. IDNRK는 부품이나 원재료의 자재 번호로, 여러 제품에서 재사용될 수 있습니다. — This node represents component materials included in a BOM. 'IDNRK' is the material number for parts or raw materials, which may be reused across multiple parent products.",
+        "properties": ["IDNRK"]
+      },
+      {
+        "label": "Supplier",
+        "primary_key": "LIFNR",
+        "description": "구성 자재를 공급하는 공급처입니다. LIFNR은 공급자 식별자이며, 자재-공급 관계를 정의합니다. — This node represents the supplier entity. 'LIFNR' is the supplier identifier and defines the link between materials and their vendors.",
+        "properties": ["LIFNR"]
+      },
+      {
+        "label": "City",
+        "primary_key": "ORT01",
+        "description": "공급처가 위치한 도시를 나타냅니다. ORT01은 도시명을 저장하며, 공급자의 위치 정보로 사용됩니다. — This node represents the city where the supplier is located. 'ORT01' stores the city name and is used as location metadata for the supplier.",
+        "properties": ["ORT01"]
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Material",
+        "to": "Material",
+        "type": "HAS_COMPONENT",
+        "properties": ["MENGE", "MEINS", "STPOZ"],
+        "description": "BOM 구조에서 상위 자재(STLNR)가 하위 자재(IDNRK)를 어떤 수량(MENGE), 단위(MEINS), 순서(STPOZ)로 포함하는지를 나타냅니다. — This relationship defines the BOM structure where a parent material (STLNR) includes component materials (IDNRK) with associated quantity, unit of measure, and item position.",
+        "direction": "STLNR → IDNRK"
+      },
+      {
+        "from": "Material",
+        "to": "Supplier",
+        "type": "SUPPLIED_BY",
+        "properties": [],
+        "description": "구성 자재(IDNRK)가 특정 공급자(LIFNR)에 의해 공급됨을 나타냅니다. — Indicates that a component material (IDNRK) is supplied by a specific supplier (LIFNR).",
+        "direction": "IDNRK → LIFNR"
+      },
+      {
+        "from": "Supplier",
+        "to": "City",
+        "type": "LOCATED_IN",
+        "properties": [],
+        "description": "공급자(LIFNR)가 특정 도시에 위치함을 나타냅니다. — Connects each supplier (LIFNR) to a specific city (ORT01).",
+        "direction": "LIFNR → ORT01"
+      }
+    ],
+    "used_fields": ["MATNR", "STLNR", "IDNRK", "MENGE", "MEINS", "STPOZ", "LIFNR", "ORT01"]
+  },  
+  {
+    "table_name": "LFA1",
+    "schema_explanation": "LFA1 represents the general section of vendor master data in SAP. It includes core attributes such as vendor name, address, language, country, and tax identifiers. This data forms the basis for linking vendors to purchasing documents, classification hierarchies, and financial transactions.",
+    "nodes": [
+      {
+        "label": "Vendor",
+        "primary_key": "LIFNR",
+        "description": "Represents the central business entity of a supplier or service provider. 'LIFNR' (Vendor Number) is its unique identifier. This node captures fundamental identifying attributes like name, sort field, salutation, and language, serving as the primary anchor for all vendor-related information.",
+        "properties": ["name", "LIFNR", "NAME1", "SORTL", "ANRED", "MCOD1", "MCOD3", "SPRAS"]
+      },
+      {
+        "label": "Address",
+        "primary_key": "ADRNR",
+        "description": "Details the primary physical location associated with a vendor. 'ADRNR' (Address Number) uniquely identifies this address. It includes street and postal code, acting as a crucial spatial reference for logistics and compliance.",
+        "properties": ["name", "ADRNR", "STRAS", "PSTLZ"]
+      },
+      {
+        "label": "Country",
+        "primary_key": "LAND1",
+        "description": "Identifies a sovereign nation or geographical territory. 'LAND1' (Country Key) is its unique identifier. This node is fundamental for managing international operations and providing macro-level geographical context.",
+        "properties": ["name", "LAND1"]
+      },
+      {
+        "label": "City",
+        "primary_key": "ORT01",
+        "description": "Represents an urban area or municipality. 'ORT01' (City) is its unique identifier. It also includes 'REGIO' (Region Key) as an attribute, providing sub-country geographical context directly within the city node. This node supports granular location-based services.",
+        "properties": ["name", "ORT01", "REGIO"]
+      },
+      {
+        "label": "LifecycleStatus",
+        "primary_key": "concatenatedFields_Lifecycle",
+        "description": "Reflects the administrative state of a vendor record, including creation details, last change information, and the deletion flag. Its primary key is composite. This node is crucial for data governance, auditing changes, and understanding the vendor record's active status over time.",
+        "properties": ["name", "ERDAT", "ERNAM", "AEDAT", "USNAM", "DUEFL", "UPTIM"]
+      },
+      {
+        "label": "VendorType",
+        "primary_key": "KTOKK",
+        "description": "Classifies the vendor based on its account group. 'KTOKK' (Account Group) uniquely identifies the vendor's category, which influences its behavior in various SAP processes. This node enables rule-based segmentation and tailored processes based on vendor category.",
+        "properties": ["name", "KTOKK"]
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Vendor",
+        "to": "Address",
+        "type": "HAS_PRIMARY_ADDRESS",
+        "properties": [],
+        "description": "Links a vendor to their main physical address. This connection is fundamental for all location-dependent operations."
+      },
+      {
+        "from": "Address",
+        "to": "City",
+        "type": "LOCATED_IN_CITY",
+        "properties": [],
+        "description": "Indicates that the primary address is situated within a specific city (identified by 'ORT01'). This establishes a geographical link for localized insights."
+      },
+      {
+        "from": "City",
+        "to": "Country",
+        "type": "LOCATED_IN_COUNTRY",
+        "properties": [],
+        "description": "Links a city to its parent country (identified by 'LAND1'). This completes the geographical hierarchy, enabling country-specific business logic and reporting."
+      },
+      {
+        "from": "Vendor",
+        "to": "LifecycleStatus",
+        "type": "HAS_LIFECYCLE_STATUS",
+        "properties": [],
+        "description": "Connects a vendor to its administrative lifecycle status. This provides temporal context for data governance and auditing."
+      },
+      {
+        "from": "Vendor",
+        "to": "VendorType",
+        "type": "IS_CLASSIFIED_AS",
+        "properties": [],
+        "description": "Classifies a vendor by its account group or type. This relationship enables differentiation of business rules and tailored processes based on vendor category."
+      }
+    ],
+    "used_fields": [
+      "LIFNR", "LAND1", "NAME1", "ORT01", "PSTLZ", "REGIO", "SORTL", "STRAS", "ADRNR", "MCOD1", "MCOD3", "ANRED", "ERDAT", "ERNAM", "KTOKK", "SPRAS", "DUEFL", "UPTIM", "AEDAT", "USNAM"
+    ]
+  }
+
+]}

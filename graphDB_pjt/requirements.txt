@@ -11,3 +11,4 @@ neo4j-graphrag
 python-dotenv
 torch
 python-multipart
+sentence-transformers

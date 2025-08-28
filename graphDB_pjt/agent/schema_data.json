@@ -1,0 +1,249 @@
+[
+  {
+    "table_name": "KNA1",
+    "schema_explanation": "이 스키마는 SAP 고객(KNA1) 마스터 데이터를 중심으로 고객의 위치, 분류, 세금, 생애주기 정보를 통합 모델링합니다. 이를 통해 고객 기반 지리 추론, 규제 준수 여부 판단, 고객 세분화 등의 작업이 가능합니다. ",
+    "nodes": [
+      {
+        "label": "Customer",
+        "primary_key" : "KUNNR",
+        "properties" : ["KUNNR", "NAME1", "NAME2", "SORTL", "ANRED"],
+        "description": "SAP 시스템의 고객 또는 비즈니스 파트너 식별자"
+      },
+      {
+        "label": "Address",
+        "primary_key": "ADRNR",
+        "properties" : ["ADRNR", "STRAS", "PSTLZ"],
+        "description": "고객의 물리적 주소 정보"
+      },
+      {
+        "label": "City",
+        "primary_key": "ORT01",
+        "properties": ["ORT01", "REGIO"],
+        "description": "주소가 위치한 도시"
+      },
+      {
+        "label": "Country",
+        "primary_key": "LAND1",
+        "properties": ["LAND1"],
+        "description": "도시가 속한 국가"
+      },
+      {
+        "label": "TaxInfo",
+        "primary_key": "concatenatedFields",
+        "properties": ["STCD2", "STCD5"],
+        "description": "고객의 세금 정보"
+      },
+      {
+        "label": "Lifecycle",
+        "primary_key": "concatenatedFields",
+        "properties": ["ERDAT", "ERNAM", "DUEFL"],
+        "description": "고객 생성일, 생성자, 삭제 플래그 등 생애주기 정보"
+      },
+      {
+        "label": "CustomerType",
+        "primary_key": "KTOKD",
+        "properties": ["KTOKD"],
+        "description": "고객 유형 분류 정보"
+      },
+      {
+        "label": "Extra",
+        "primary_key": "KUNNR",
+        "properties": [
+          "MANDT", "BBBNR", "BBSNR", "BUBKZ", "UMSAT", "UMJAH", "JMZAH", "JMJAH", "UMSA1", "HZUOR",
+          "J_1KFREPRE", "J_1KFTBUS", "J_1KFTIND", "UPTIM", "RIC", "LEGALNAT", "_VSO_R_PALHGT", "_VSO_R_I_NO_LYR",
+          "_VSO_R_ULD_SIDE", "_VSO_R_LOAD_PREF", "PSPNR", "J_3GSTDMON", "J_3GSTDTAG", "J_3GTAGMON", "J_3GVMONAT",
+          "J_3GEMINBE", "J_3GFMGUE", "J_3GZUSCHUE"
+        ],
+        "description": "연결되지 않은 레거시 필드 묶음"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Customer",
+        "to": "Address",
+        "type": "HAS_ADDRESS",
+        "properties": ["PSTLZ"],
+        "description": "고객과 주소를 연결하며, 위치 기반 분석에 활용"
+      },
+      {
+        "from": "Address",
+        "to": "City",
+        "type": "IN_CITY",
+        "properties": ["ORT01"],
+        "description": "주소가 속한 도시와 연결"
+      },
+      {
+        "from": "City",
+        "to": "Country",
+        "type": "PART_OF",
+        "properties": ["LAND1"],
+        "description": "도시가 속한 국가를 나타냄"
+      },
+      {
+        "from": "Customer",
+        "to": "TaxInfo",
+        "type": "HAS_TAX_INFO",
+        "properties": [],
+        "description": "고객의 세금 정보를 연결"
+      },
+      {
+        "from": "Customer",
+        "to": "Lifecycle",
+        "type": "HAS_LIFECYCLE",
+        "properties": [],
+        "description": "고객의 생성 및 삭제 상태 등의 생애주기 연결"
+      },
+      {
+        "from": "Customer",
+        "to": "CustomerType",
+        "type": "HAS_TYPE",
+        "properties": [],
+        "description": "고객 유형 분류 연결"
+      },
+      {
+        "from": "Customer",
+        "to": "Extra",
+        "type": "HAS_EXTRA",
+        "properties": [],
+        "description": "레거시 필드 보존용 연결"
+      }
+    ],
+    "used_fields": [
+      "KUNNR","NAME1","NAME2","SORTL","MCOD1","MCOD2","MCOD3","ANRED","ADRNR","STRAS",
+      "PSTLZ","ORT01","REGIO","LAND1","STCD2","STCD5","ERDAT","ERNAM","DUEFL","KTOKD"
+    ]
+  },
+  {
+    "table_name": "CUSTOM_SALES_PLAN",
+    "schema_explanation": "custom_sales_plan 스키마는 각 제품(MATNR)의 분기별 판매 계획 데이터를 저장한다. 연도, 분기, 수량, 단가, 매출금액 정보를 포함한다.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "matnr",
+        "properties": ["matnr"],
+        "description": "제품, 구성품 식별자"
+      },
+      {
+        "label": "TimePeriod",
+        "primary_key": "concatenatedFields",
+        "properties": ["year", "quarter"],
+        "description": "판매계획이 적용되는 연도와 분기 (ex. 2025, Q1)"
+      },
+      {
+        "label": "SalesPlan",
+        "primary_key": "concatenatedFields",
+        "properties": ["quantity", "unitPrice", "amount"],
+        "description": "판매계획 - 수량, 단가, 금액 포함"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "Material",
+        "to": "SalesPlan",
+        "type": "HAS_SALES_PLAN",
+        "properties": [],
+        "description": "특정 제품/자재의 판매계획을 나타냄"
+      },
+      {
+        "from": "SalesPlan",
+        "to": "TimePeriod",
+        "type": "PLANNED_FOR",
+        "properties": [],
+        "description": "해당 판매계획이 어느 시점(연도+분기)에 해당하는지 명시"
+      }
+    ]
+  },
+  {
+    "table_name": "EINA",
+    "schema_explanation": "EINA 스키마는 자재(MATNR)와 그것을 공급하는 공급처(LIFNR)를 매핑. 자재-공급처 관계를 표현하며 공급망 분석에 사용됨",
+    "nodes": [
+      {
+        "label": "MATNR",
+        "primary_key": "MATNR",
+        "properties": ["MATNR"],
+        "description": "자재 번호"
+      },
+      {
+        "label": "LIFNR",
+        "primary_key": "LIFNR",
+        "properties" : ["MATNR"],
+        "description": "공급처 ID"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "MATNR",
+        "to": "LIFNR",
+        "type": "PRODUCED_AT",
+        "properties": [],
+        "description": "특정 자재/원자재/재료가 만들어지고 공급되는 공급처와 그 자재를 연결"
+      }
+    ]
+  },
+  {
+    "table_name": "LFA1",
+    "schema_explanation": "LFA1 스키마는 공급처(LIFNR)의 상세 정보 중 도시(ORT01)를 포함함. 공급처 위치 분석에 사용됨",
+    "nodes": [
+      {
+        "label": "LIFNR",
+        "primary_key": "LIFNR",
+        "properties": ["LIFNR"],
+        "description": "공급처 ID"
+      },
+      {
+        "label": "ORT01",
+        "primary_key": "ORT01",
+        "properties": ["ORT01"],
+        "description": "공급처 도시"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "LIFNR",
+        "to": "ORT01",
+        "type": "IS_LOCATED_AT",
+        "properties": [],
+        "description": "공급처가 위치한 도시를 연결"
+      }
+    ]
+  },
+  {
+    "table_name": "MAST",
+    "schema_explanation": "mast 스키마는 제품(MATNR)과 BOM 번호(STLNR)를 매핑. 각 제품이 어떤 BOM 구조를 사용하는지 나타냄.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key" : "MATNR",
+        "properties" : ["MATNR", "STLNR"],
+        "description": "제품 자재 번호(MATNR)와 해당 자재 구조를 참조하는 bom 번호(STNLR)로 구성된 완제품 또는 반제품. BOM에서 상위 자재를 나타냄."
+      }
+    ]
+  },
+  {
+    "table_name": "STPO",
+    "schema_explanation": "stpo 스키마는 BOM(STLNR) 번호에 따라 포함된 구성 자재(IDNRK)와 수량(MENGE)을 정의. 다단계 제품 구성 구조 분석에 사용됨.",
+    "nodes": [
+      {
+        "label": "Material",
+        "primary_key": "STLNR",
+        "properties": ["STLNR"],
+        "description": "상위 BOM 식별자"
+      },
+      {
+        "label": "Material",
+        "primary_key": "IDNRK",
+        "properties": ["IDNRK"],
+        "description": "BOM에 포함된 구성 자재 번호"
+      }
+    ],
+    "relationships":[
+      {
+        "from": "Material",
+        "to": "Material",
+        "type": "HAS_COMPONENT",
+        "properties": ["MENGE"],
+        "description": "상위 자재(STLNR)가 하위 자재(IDNRK)를 어떤 수량(MENGE)으로 포함하는지 정의"
+      }
+    ]
+  }
+]

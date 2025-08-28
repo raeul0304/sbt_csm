@@ -86,8 +86,8 @@ def initialize_retriever(schema: dict):
         driver=driver,
         llm=model,  # type: ignore
         neo4j_schema=json.dumps(schema),
-        examples=config.NEO4J_EXAMPLES,
-        custom_prompt = config.CYPHER_TEMPLATES
+        examples=config.KNA1_NEO4J_EXAMPLES,
+        custom_prompt = config.KNA1_CYPHER_TEMPLATES
     )
     return retriever
 

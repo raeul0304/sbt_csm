@@ -8,7 +8,8 @@ from langchain_core.messages import SystemMessage as LangChainSystemMessage, Hum
 from typing import Optional
 import json
 import sys
-sys.path.append("C:/Users/USER/vscodeProjects/graphDB_pjt")
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from db_to_graphDB.graphdb_llm import run_graphDB_schema_generation_llm
 from db_to_graphDB.generate_graphDB import run_graphdb_pipeline
 from text2cypher.cypher_llm import run_text2cypher_llm, initialize_retriever
@@ -28,23 +29,43 @@ app.add_middleware(
     allow_headers=["*"],  # 모든 헤더를 허용
 )
 
-@app.post("/graphdb_llm") #192.168.0.115:8344/graphdb_llm
+pipeline_instance = None
+
+@app.post("/graphdb_llm") #121.133.205.199:14878/graphdb_llm
 def text_inference(
     file_name: Optional[str] = Form(None),
     assistant: str = Form("graphdb"),
     file: Optional[UploadFile] = File(None),
     schema: Optional[str] = Form(None),
-    query: Optional[str] = Form(None)
+    query: Optional[str] = Form(None),
+    user_edit_text: Optional[str] = Form(None)
 ):
+    global pipeline_instance
     logger.info(f"Received params: file_name={file_name}, assistant={assistant}")
     try:
         if assistant == 'generate_graphdb_schema':
-            response = run_graphDB_schema_generation_llm(file_name, file)
+            pipeline_instance = GraphDBSchemaPipeline(file_name, file)
+            response = pipeline_instance.run_graphDB_schema_generation_llm()
             print(response)
+        
+        elif assistant = 'regenerate_graphdb_schema':
+            if schema is None:
+                print("schema가 없습니다")
+            if pipeline_instance is None:
+                print("pipeline instance가 초기화되지 않았습니다.")
+            else:
+                try:
+                    parsed_schema = json.loads(schema) 
+                    response = pipeline_instance.run_regenerate_schema(parsed_schema, user_edit_text)
+                    print(f">>> 스키마 재생성 성공 여부 : {response}")
+                except Exception as e:
+                    logger.error(f"Error processing schema regeneration : {str(e)}")
 
         elif assistant == 'generate_graphdb':
             if schema is None:
                 print("schema가 없습니다")
+            if pipeline_instance is None:
+                print("pipeline instance가 초기화되지 않았습니다.")
             else:
                 try:
                     parsed_schema = json.loads(schema)
@@ -68,7 +89,18 @@ def text_inference(
         elif assistant == 'text2cypher':
             with open("latest_schema.json", "r", encoding="utf-8") as f:
                 schema_dict = json.load(f)
-            retriever = initialize_retriever(schema=schema_dict)
+            
+            pipeline = GraphDBSchemaPipeline(file_name="", file=None)
+            pipeline.schema = schema_dict  # 수동 설정
+            pipeline.generate_text2cypher_examples()  # LLM 호출해서 examples 생성
+
+            retriever = Text2CypherRetriever(
+                driver=driver,
+                llm=pipeline.model,
+                neo4j_schema=json.dumps(pipeline.schema),
+                examples=pipeline.cypher_examples,
+                custom_prompt=config.CYPHER_TEMPLATES
+            )
             response = run_text2cypher_llm(retriever, query)
             print(response)
 

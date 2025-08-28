@@ -1,0 +1,15 @@
+﻿column_name,description,column,sub_table
+MANDT,Client,MANDT,T000
+MATNR,Material Number,MATNR,MARA
+WERKS,Plant,WERKS,T001W
+STLAN,BOM Usage,STLAN,T416
+STLNR,Bill of Material,STLNR,                              
+STLAL,Alternative BOM,STLAL,                              
+LOSVN,From Lot Size,LOSVN,                              
+LOSBS,To Lot Size,LOSBS,                              
+ANDAT,Date Record Created On,ANDAT,                              
+ANNAM,User who created record,ANNAM,                              
+AEDAT,Last Changed On,AEDAT,                              
+AENAM,Name of Person Who Changed Object,AENAM,                              
+CSLTY,Indicator: configured material (material variant),CSLTY,                              
+MATERIAL_BOM_KEY,Material BOM Concatenated Key,MATERIAL_BOM_KEY

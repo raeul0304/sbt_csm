@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  graphdb:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: gdb_transform_llm
+    container_name: db_to_gdb_llm
+    ports:
+      - "8787:8787"  # 외부 포트:내부 포트
+    env_file:
+      - .env          # .env 파일 자동 로드
+    volumes:
+      - ./:/app
+      - ./tmp:/app/tmp

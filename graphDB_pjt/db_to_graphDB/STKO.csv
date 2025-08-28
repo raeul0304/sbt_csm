@@ -1,0 +1,39 @@
+﻿column_name,description,column,sub_table
+MANDT,Client,MANDT,T000
+STLTY,BOM category,STLTY,                              
+STLNR,Bill of Material,STLNR,                              
+STLAL,Alternative BOM,STLAL,                              
+STKOZ,Internal counter,STKOZ,                              
+DATUV,Valid-From Date,DATUV,                              
+TECHV,Technical status from,TECHV,                              
+AENNR,Change Number,AENNR,AENR
+LKENZ,Deletion Indicator,LKENZ,                              
+LOEKZ,Deletion flag for BOMs,LOEKZ,                              
+VGKZL,Previous header counter,VGKZL,                              
+ANDAT,Date Record Created On,ANDAT,                              
+ANNAM,User who created record,ANNAM,                              
+AEDAT,Last Changed On,AEDAT,                              
+AENAM,Name of Person Who Changed Object,AENAM,                              
+BMEIN,Base Unit of Measure for BOM,BMEIN,T006
+BMENG,Base quantity,BMENG,                              
+CADKZ,CAD Indicator,CADKZ,                              
+LABOR,Laboratory/design office,LABOR,T024L
+LTXSP,"Long Text Language, for Creation of a Change Document",LTXSP,T002
+STKTX,Alternative BOM Text,STKTX,                              
+STLST,Bill of Material Status,STLST,T415S
+WRKAN,Plant where BOM or alternative/variant created,WRKAN,T001W
+DVDAT,Date of last date shift,DVDAT,                              
+DVNAM,Name of the user who carried out the date shift,DVNAM,                              
+AEHLP,Date Shift Hierarchy Indicator,AEHLP,                              
+ALEKZ,ALE indicator,ALEKZ,                              
+GUIDX,Global identification of a BOM header change status,GUIDX,                              
+VALID_TO,Valid-to date,VALID_TO,                              
+ECN_TO,Change Number To,ECN_TO,                              
+BOM_VERSN,BOM Version,BOM_VERSN,                              
+VERSNST,BOM Version Status,VERSNST,                              
+VERSNLASTIND,Indicator: Latest Released BOM Version,VERSNLASTIND,                              
+LASTCHANGEDATETIME,UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun),LASTCHANGEDATETIME,                              
+BOM_AIN_IND,Relevant for BOM to AIN Handover,BOM_AIN_IND,                              
+BOM_PREV_VERSN,Predecessor Version of BOM,BOM_PREV_VERSN,                              
+.INCLUDE,Persistent Structure for Maintain BOM Header,.INCLUDE,                              
+DUMMY_STKO_INCL_EEW_PS,Data Element for Extensibility of Maintain BOM Header,DUMMY_STKO_INCL_EEW_PS
