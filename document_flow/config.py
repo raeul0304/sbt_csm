@@ -51,3 +51,107 @@ DOC_TYPE_TO_GROUP: Mapping[str, Group] = MappingProxyType({
     for group, labels in GROUP_LABELS.items()
     for label in labels
 })
+
+#테이블 매핑
+TABLE_MAP = {
+    'Sales Order': {'table': 'vbak', 'doc_col': 'vbeln'},
+    'Outbound Delivery': {'table': 'likp', 'doc_col': 'vbeln'},
+    'Invoice': {'table': 'vbrk', 'doc_col': 'vbeln'},
+    'Cancel Invoice': {'table': 'vbrk', 'doc_col': 'vbeln'},
+    'GD Goods Issue': {'table': 'mseg', 'doc_col': 'mblnr'},
+    'RE Goods Delivery': {'table': 'mseg', 'doc_col': 'mblnr'},
+    'Journal Entry': {'table': 'bseg', 'doc_col': 'belnr'},
+    'Picking Request': {'table': 'likp', 'doc_col': 'vbeln'},
+}
+
+#컬럼 매핑
+COLUMN_MAP = {
+    'Sales Order': {
+        'doc_no': 'vbeln',
+        'item': 'posnr',
+        'preced_doc': 'vgbel',
+        'orig_item': 'vgpos',
+        'quantity': 'kwmeng',
+        'unit': 'vrkme',
+        'ref_value': 'netwr',
+        'curr': 'waerk',
+        'created_on': 'erdat',
+        'material': 'matnr',
+        'description': 'arktx',
+        'status': 'gbstk'
+    },
+    'Outbound Delivery': {
+        'doc_no': 'vbeln',
+        'item': 'posnr',
+        'preced_doc': 'vgbel',
+        'orig_item': 'vgpos',
+        'quantity': 'lfimg',
+        'unit': 'vrkme',
+        'created_on': 'erdat',
+        'material': 'matnr',
+        'description': 'arktx',
+        'status': 'gbstk'
+    },
+    'Picking Request': {
+        'doc_no': 'erdat',
+        'item': 'posnr',
+        'preced_doc': 'vbeln',
+        'orig_item': 'vgpos',
+        'quantity': 'lfimg',
+        'unit': 'vrkme',
+        'created_on': 'erdat',
+        'material': 'matnr',
+        'description': 'arktx',
+        'status': 'gbstk'
+    },
+    'GD Goods Issue': {
+        'doc_no': 'mblnr',
+        'item': 'zeile',
+        'preced_doc': 'vbeln_im',
+        'orig_item': 'vbelp_im',
+        'quantity': 'menge',
+        'unit': 'meins',
+        'ref_value': 'dmbtr',
+        'curr': 'waers',
+        'created_on': 'cpudt_mkpf',
+        'material': 'matnr',
+        'description': 'arktx',
+        'status': 'wbstk'
+    },
+    'Invoice': {
+        'doc_no': 'vbeln',
+        'item': 'posnr',
+        'preced_doc': 'vgbel',
+        'orig_item': 'vgpos',
+        'quantity': 'fkimg',
+        'unit': 'vrkme',
+        'ref_value': 'netwr',
+        'curr': 'waerk',
+        'created_on': 'erdat',
+        'material': 'matnr',
+        'description': 'arktx',
+        'status': 'gbstk'
+    },
+    'Cancel Invoice': {
+        'doc_no': 'vbeln',
+        'item': 'posnr',
+        'preced_doc': 'stblg',
+        'orig_item': 'vgpos',
+        'quantity': 'fkimg',
+        'unit': 'vrkme',
+        'ref_value': 'netwr',
+        'curr': 'waerk',
+        'created_on': 'erdat',
+        'material': 'matnr',
+        'description': 'arktx',
+        'status': 'gbstk'
+    },
+    'Journal Entry': {
+        'doc_no': 'belnr',
+        'preced_doc': 'vbeln',
+        'ref_value': 'wrbtr',
+        'curr': 'waers',
+        'created_on': 'cpudt',
+        'status': 'augbl'
+    }
+}

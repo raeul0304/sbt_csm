@@ -1,39 +1,40 @@
 import psycopg
+from psycopg import sql
 import config
 import pandas as pd
 from datetime import datetime
 from typing import Any, Dict, List, Mapping, Tuple
 from django.db import connection
-from doc_flow.constants import GROUP_LABELS, X_BY_GROUP, Y_GAP, RULES, Group, DEFAULT_GROUP, DOC_TYPE_TO_GROUP
+from .constants import GROUP_LABELS, X_BY_GROUP, Y_GAP, RULES, Group, DEFAULT_GROUP, DOC_TYPE_TO_GROUP
 
 
 # ----Sales Order Number의 document flow 전체 경로 조회----
-def get_document_flow_path(sales_order_number, connection):
+def get_document_flow_path(connection, schema, sales_order_number):
    
     if not connection:
         return []
         
     print(f"1단계: VBFA 테이블에서 Document Flow 경로를 조회 중입니다... (Sales Order: {sales_order_number})")
     
-    query = """
+    query = sql.SQL( """
     SELECT
         VBELV AS pre_doc_no,
         VBELN AS post_doc_no,
         VBTYP_V AS pre_doc_type,
         VBTYP_N AS post_doc_type
     FROM
-        VBFA
+        {schema}.VBFA
     WHERE
         (VBELV = LPAD(%s, 10, '0') AND VBTYP_N = 'J')
         OR VBELV IN (
             SELECT VBELN
-            FROM VBFA
+            FROM {schema}.VBFA
             WHERE VBELV = LPAD(%s, 10, '0') AND VBTYP_N = 'J'
         )
     ORDER BY
         ERDAT,
         ERZET;
-    """
+    """).format(schema=sql.Identifier(schema))
     
     try:
         cursor = connection.cursor()
@@ -68,10 +69,11 @@ def execute_sql(conn, sql, params=None):
         print("params:", params)
         raise e
 
-def get_sales_order_details(conn, sales_order_number):
+
+def get_sales_order_details(conn, schema, sales_order_number):
     """Sales Order 상세 데이터를 조회"""
     #print(f" - Sales Order ({sales_order_number}) 조회 중...")
-    query = """
+    query = sql.SQL("""
     SELECT
       'Sales Order' AS document_type,
       VBAK.VBELN AS doc_no,
@@ -85,19 +87,25 @@ def get_sales_order_details(conn, sales_order_number):
       VBAK.ERDAT AS created_on,
       VBAP.MATNR AS material,
       VBAP.ARKTX AS description,
-      VBAK.GBSTK AS status,
+      CASE
+        WHEN VBAK.GBSTK='C' THEN 'Completed'
+        WHEN VBAK.GBSTK='B' THEN 'Partially Completed'
+        WHEN VBAK.GBSTK='A' THEN 'Not Completed'
+        ELSE 'Unknown'
+      END AS status,
       'C' AS doc_code
-    FROM VBAK
-    JOIN VBAP ON VBAK.VBELN = VBAP.VBELN
+    FROM {schema}.VBAK
+    JOIN {schema}.VBAP ON VBAK.VBELN = VBAP.VBELN
     WHERE VBAK.VBELN = LPAD(%s, 10, '0')
-    """
+    """).format(schema=sql.Identifier(schema))
+
     return execute_sql(conn, query, (sales_order_number,))
 
 
-def get_outbound_delivery_details(conn, doc_no, pre_doc_no=None):
+def get_outbound_delivery_details(conn, schema, doc_no, pre_doc_no=None):
     """Outbound Delivery (J) 상세 데이터를 조회"""
     #print(f" - Outbound Delivery ({doc_no}) 조회 중...")
-    query = """ 
+    query = sql.SQL(""" 
     SELECT
       'Outbound Delivery' AS document_type,
       LIKP.VBELN AS doc_no,
@@ -109,22 +117,28 @@ def get_outbound_delivery_details(conn, doc_no, pre_doc_no=None):
       LIKP.ERDAT AS created_on,
       LIPS.MATNR AS material,
       LIPS.ARKTX AS description,
-      LIKP.GBSTK AS status,
+      CASE
+        WHEN LIKP.GBSTK='C' THEN 'Completed'
+        WHEN LIKP.GBSTK='B' THEN 'Partially Completed'
+        WHEN LIKP.GBSTK='A' THEN 'Not Completed'
+        ELSE 'Unknown'
+      END AS status,
       'J' AS doc_code
-    FROM LIKP
-    JOIN LIPS ON LIKP.VBELN = LIPS.VBELN
+    FROM {schema}.LIKP
+    JOIN {schema}.LIPS ON LIKP.VBELN = LIPS.VBELN
     WHERE LIKP.VBELN = %s
-    """
+    """).format(schema=sql.Identifier(schema))
+
     return execute_sql(conn, query, (doc_no,))
 
 
-def get_picking_request_details(conn, doc_no, pre_doc_no):
+def get_picking_request_details(conn, schema, doc_no, pre_doc_no):
     """Picking Request (Q) 상세 데이터를 조회"""
     #print(f" - Picking Request ({doc_no}) 조회 중...")
     date_obj = datetime.strptime(doc_no, '%Y%m%d')
     formatted_doc_no = date_obj.strftime('%Y-%m-%d')
     #print(f"Formatted Picking Request No: {formatted_doc_no}")
-    query = """ 
+    query = sql.SQL(""" 
     SELECT
       'Picking Request' AS document_type,
       LIKP.ERDAT AS doc_no,
@@ -136,21 +150,27 @@ def get_picking_request_details(conn, doc_no, pre_doc_no):
       LIKP.ERDAT AS created_on,
       LIPS.MATNR AS material,
       LIPS.ARKTX AS description,
-      LIKP.GBSTK AS status,
+      CASE
+        WHEN LIKP.GBSTK='C' THEN 'Completed'
+        WHEN LIKP.GBSTK='B' THEN 'Partially Completed'
+        WHEN LIKP.GBSTK='A' THEN 'Not Completed'
+        ELSE 'Unknown'
+      END AS status,
       'Q' AS doc_code
-    FROM LIKP
-    JOIN LIPS ON LIKP.VBELN = LIPS.VBELN
+    FROM {schema}.LIKP
+    JOIN {schema}.LIPS ON LIKP.VBELN = LIPS.VBELN
     WHERE LIKP.ERDAT = %s AND LIKP.VBELN = %s
-    """
+    """).format(schema=sql.Identifier(schema))
+
     result = execute_sql(conn, query, (formatted_doc_no, pre_doc_no,))
     result['doc_no'] = result['doc_no'].astype(str).str.replace('-', '', regex=False)
     return result
 
 
-def get_goods_issue_details(conn, doc_no, pre_doc_no=None):
+def get_goods_issue_details(conn, schema, doc_no, pre_doc_no=None):
     """GD Goods Issue (R) 상세 데이터를 조회"""
     #print(f" - GD Goods Issue ({doc_no}) 조회 중...")
-    query = """
+    query = sql.SQL("""
     SELECT
       'GD Goods Issue' AS document_type,
       MSEG.MBLNR AS doc_no,
@@ -164,20 +184,25 @@ def get_goods_issue_details(conn, doc_no, pre_doc_no=None):
       MSEG.CPUDT_MKPF AS created_on,
       MSEG.MATNR AS material,
       LIPS.ARKTX AS description,
-      LIKP.WBSTK AS status,
+      CASE
+        WHEN LIKP.WBSTK='C' THEN 'Completed'
+        WHEN LIKP.WBSTK='B' THEN 'Partially Completed'
+        WHEN LIKP.WBSTK='A' THEN 'Not Completed'
+        ELSE 'Unknown'
+      END AS status,
       'R' AS doc_code
-    FROM MSEG
-    LEFT JOIN LIPS ON MSEG.VBELN_IM = LIPS.VBELN AND MSEG.VBELP_IM = LIPS.POSNR
-    LEFT JOIN LIKP ON LIPS.VBELN = LIKP.VBELN
+    FROM {schema}.MSEG
+    LEFT JOIN {schema}.LIPS ON MSEG.VBELN_IM = LIPS.VBELN AND MSEG.VBELP_IM = LIPS.POSNR
+    LEFT JOIN {schema}.LIKP ON LIPS.VBELN = LIKP.VBELN
     WHERE MSEG.MBLNR = %s
-"""
+    """).format(schema=sql.Identifier(schema))
     return execute_sql(conn, query, (doc_no,))
 
 
-def get_re_goods_delivery_details(conn, doc_no, pre_doc_no=None):
+def get_re_goods_delivery_details(conn, schema, doc_no, pre_doc_no=None):
     """RE goods delivery (h) 상세 데이터를 조회"""
     #print(f" - RE goods delivery ({doc_no}) 조회 중...")
-    query = """
+    query = sql.SQL("""
     SELECT
       'RE Goods Delivery' AS document_type,
       MSEG.MBLNR AS doc_no,
@@ -191,20 +216,25 @@ def get_re_goods_delivery_details(conn, doc_no, pre_doc_no=None):
       MSEG.CPUDT_MKPF AS created_on,
       MSEG.MATNR AS material,
       LIPS.ARKTX AS description,
-      LIKP.GBSTK AS status,
+      CASE
+        WHEN LIKP.GBSTK='C' THEN 'Completed'
+        WHEN LIKP.GBSTK='B' THEN 'Partially Completed'
+        WHEN LIKP.GBSTK='A' THEN 'Not Completed'
+        ELSE 'Unknown'
+      END AS status,
       'h' AS doc_code
-    FROM MSEG
-    LEFT JOIN LIPS ON MSEG.VBELN_IM = LIPS.VBELN AND MSEG.VBELP_IM = LIPS.POSNR
-    LEFT JOIN LIKP ON LIPS.VBELN = LIKP.VBELN
+    FROM {schema}.MSEG
+    LEFT JOIN {schema}.LIPS ON MSEG.VBELN_IM = LIPS.VBELN AND MSEG.VBELP_IM = LIPS.POSNR
+    LEFT JOIN {schema}.LIKP ON LIPS.VBELN = LIKP.VBELN
     WHERE MSEG.MBLNR = %s
-    """
+    """).format(schema=sql.Identifier(schema))
     return execute_sql(conn, query, (doc_no,))
 
 
-def get_invoice_details(conn, doc_no, pre_doc_no=None):
+def get_invoice_details(conn, schema, doc_no, pre_doc_no=None):
     """Invoice (M) 상세 데이터를 조회"""
     #print(f" - Invoice ({doc_no}) 조회 중...")
-    query = """
+    query = sql.SQL("""
     SELECT
         'Invoice' AS document_type,
         VBRK.VBELN AS doc_no,
@@ -218,19 +248,25 @@ def get_invoice_details(conn, doc_no, pre_doc_no=None):
         VBRK.ERDAT AS created_on,
         VBRP.MATNR AS material,
         VBRP.ARKTX AS description,
-        VBRK.GBSTK AS status,
+        CASE
+            WHEN VBRK.GBSTK='C' THEN 'Completed'
+            WHEN VBRK.GBSTK='B' THEN 'Partially Completed'
+            WHEN VBRK.GBSTK='A' THEN 'Not Completed'
+            ELSE 'Unknown'
+        END AS status,
         'M' as doc_code
-    FROM VBRK
-    JOIN VBRP ON VBRK.VBELN = VBRP.VBELN
+    FROM {schema}.VBRK
+    JOIN {schema}.VBRP ON VBRK.VBELN = VBRP.VBELN
     WHERE VBRK.VBELN = %s
-    """
+    """).format(schema=sql.Identifier(schema))
+
     return execute_sql(conn, query, (doc_no,))
 
 
-def get_cancel_invoice_details(conn, doc_no, pre_doc_no=None):
+def get_cancel_invoice_details(conn, schema, doc_no, pre_doc_no=None):
     """Cancel Invoice (N) 상세 데이터를 조회"""
     #print(f" - Cancel Invoice ({doc_no}) 조회 중...")
-    query = """
+    query = sql.SQL("""
     SELECT
       'Cancel Invoice' AS document_type,
       VBRK.VBELN AS doc_no,         
@@ -244,19 +280,25 @@ def get_cancel_invoice_details(conn, doc_no, pre_doc_no=None):
       VBRK.ERDAT AS created_on,   
       VBRP.MATNR AS material,       
       VBRP.ARKTX AS description,  
-      VBRK.GBSTK AS status,
+      CASE
+        WHEN VBRK.GBSTK='C' THEN 'Completed'
+        WHEN VBRK.GBSTK='B' THEN 'Partially Completed'
+        WHEN VBRK.GBSTK='A' THEN 'Not Completed'
+        ELSE 'Unknown'
+      END AS status,
       'N' AS doc_code          
-    FROM VBRK
-    JOIN VBRP ON VBRP.VBELN = VBRK.VBELN
+    FROM {schema}.VBRK
+    JOIN {schema}.VBRP ON VBRP.VBELN = VBRK.VBELN
     WHERE VBRK.VBELN = %s
-    """
+    """).format(schema=sql.Identifier(schema))
+
     return execute_sql(conn, query, (doc_no,))
   
 
-def get_journal_entry_details(conn, doc_no):
+def get_journal_entry_details(conn, schema, doc_no):
     """Cancel Invoice - Journal Entry 상세 데이터를 조회"""
     #print(f" - Journal Entry ({doc_no}) 조회 중...")
-    query = """
+    query = sql.SQL("""
     SELECT
       'Journal Entry' AS document_type,
       BSEG.BELNR AS doc_no,
@@ -270,17 +312,18 @@ def get_journal_entry_details(conn, doc_no):
         ELSE 'Cleared' 
       END AS status,
       'E' AS doc_code
-    FROM BSEG
-    JOIN BKPF ON BKPF.BELNR = BSEG.BELNR
+    FROM {schema}.BSEG
+    JOIN {schema}.BKPF ON BKPF.BELNR = BSEG.BELNR
     WHERE BSEG.VBELN = %s AND BSEG.KOART = 'D'
-    """
+    """).format(schema=sql.Identifier(schema))
+
     return execute_sql(conn, query, (doc_no,))
 
 
 
 
 # ----- document별 데이터 조회 실행 -----
-def get_document_details(sales_order_number, document_path, conn):
+def get_document_details(conn, schema, sales_order_number, document_path):
     """
     Document Flow 경로 목록을 기반으로 각 문서의 상세 데이터를 조회하는 함수.
     """
@@ -288,7 +331,7 @@ def get_document_details(sales_order_number, document_path, conn):
     delivery_doc_no = None
 
     # Sales Order 상세 데이터 조회 (경로와 관계없이 항상 조회)
-    so_df = get_sales_order_details(conn, sales_order_number)
+    so_df = get_sales_order_details(conn, schema, sales_order_number)
     if not so_df.empty:
         #print(f"sales order 결과: {pd.DataFrame(so_df)}")
         final_data.append(so_df)
@@ -308,48 +351,48 @@ def get_document_details(sales_order_number, document_path, conn):
         result = pd.DataFrame() # 결과 초기화
         
         if doc_type == 'J':
-            result = get_outbound_delivery_details(conn, doc_no)
+            result = get_outbound_delivery_details(conn, schema, doc_no)
             final_data.append(result)  
             #print(f"outbound delivery 결과: {pd.DataFrame(result)}")
             delivery_doc_no = result['doc_no'].iloc[0]
             #print(f"Delivery Doc No: {delivery_doc_no}")
         
         elif doc_type == 'Q':
-            result = get_picking_request_details(conn, doc_no, pre_doc_no=delivery_doc_no)
+            result = get_picking_request_details(conn, schema, doc_no, pre_doc_no=delivery_doc_no)
             final_data.append(result)  
             #print(f"picking request 결과: {result}")
             
         
         elif doc_type == 'R':
-            result = get_goods_issue_details(conn, doc_no, pre_doc_no=delivery_doc_no)
+            result = get_goods_issue_details(conn, schema, doc_no, pre_doc_no=delivery_doc_no)
             final_data.append(result)  
             #print(f"goods issue 결과: {result}")
 
         
         elif doc_type == 'h':
-            result = get_re_goods_delivery_details(conn, doc_no, pre_doc_no=delivery_doc_no)
+            result = get_re_goods_delivery_details(conn, schema, doc_no, pre_doc_no=delivery_doc_no)
             final_data.append(result)  
             #print(f"RE goods delivery 결과: {result}")
 
 
         elif doc_type == 'M':
-            result = get_invoice_details(conn, doc_no, pre_doc_no=delivery_doc_no)
+            result = get_invoice_details(conn, schema, doc_no, pre_doc_no=delivery_doc_no)
             #print(f"invoice 결과: {result}")
             final_data.append(result)  
             invoice_doc_no = result['doc_no'].iloc[0]
 
-            journal_result = get_journal_entry_details(conn, invoice_doc_no)
+            journal_result = get_journal_entry_details(conn, schema, invoice_doc_no)
             if journal_result is not None:
                 #print(f"journal entry 결과: {journal_result}")
                 final_data.append(journal_result)
         
         elif doc_type == 'N':
-            result = get_cancel_invoice_details(conn, doc_no, pre_doc_no=delivery_doc_no)
+            result = get_cancel_invoice_details(conn, schema, doc_no, pre_doc_no=delivery_doc_no)
             #print(f"cancel invoice 결과: {result}")
             final_data.append(result)  
             cancel_invoice_doc_no = result['doc_no'].iloc[0]
 
-            journal_result = get_journal_entry_details(conn, cancel_invoice_doc_no)
+            journal_result = get_journal_entry_details(conn, schema, cancel_invoice_doc_no)
             if journal_result is not None:
                 #print(f"journal entry 결과: {journal_result}")
                 final_data.append(journal_result)
@@ -480,14 +523,15 @@ def generate_final_json_docflow(df):
     nodes = build_nodes(positions)
     return {"nodes": nodes, "edges": edges}
 
+
 # ----- 전체 실행 -----
-def run_documentflow_pipeline(sales_no):
+def run_documentflow_pipeline(schema, sales_no):
     conn = connection
     if conn:
-        doc_path = get_document_flow_path(sales_no, conn)
+        doc_path = get_document_flow_path(conn, schema, sales_no)
         
         if not doc_path:
-            sales_doc = get_sales_order_details(conn, sales_no)
+            sales_doc = get_sales_order_details(conn, schema, sales_no)
             if sales_doc.empty:
                 print(f"\nDocument Flow가 없습니다. (Sales Order: {sales_no})")
                 return None
@@ -498,7 +542,7 @@ def run_documentflow_pipeline(sales_no):
             print("\n성공적으로 Document Flow 경로를 조회했습니다.")
             print(pd.DataFrame(doc_path))
             
-            final_docflow = get_document_details(sales_no, doc_path, conn)
+            final_docflow = get_document_details(conn, schema, sales_no, doc_path)
             print("최종 doc flow: ")
             print(pd.DataFrame(final_docflow))
 
@@ -509,13 +553,6 @@ def run_documentflow_pipeline(sales_no):
         conn.close()
     else:
         print("프로그램을 종료합니다.")
-
-
-# 테스트
-if __name__ == "__main__":
-    sales_order_no = "21"
-    result = run_documentflow_pipeline(sales_order_no)
-    print(result)
 
 
 

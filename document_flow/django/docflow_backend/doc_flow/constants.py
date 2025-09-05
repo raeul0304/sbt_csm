@@ -1,4 +1,3 @@
-# myapp/constants.py
 from enum import Enum
 from types import MappingProxyType
 from typing import Mapping, Tuple
