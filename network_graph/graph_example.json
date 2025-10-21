@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    { "id": "C-10", "label": "C", "name": "Sales Order", "attributes": { "doc_no": "0000000001", "item": "10", "material": "FERT001", "description": "GRANDEUR", "status": "Completed", "value": 292000000, "time": "2024-02-14", "customer": "C0010", "region": "Seoul" } },
+    { "id": "J-10", "label": "J", "name": "Outbound Delivery", "attributes": { "doc_no": "0080000001", "item": "10", "status": "Completed", "time": "2024-02-15" } },
+    { "id": "Q-10", "label": "Q", "name": "Picking Request", "attributes": { "doc_no": "20240215", "item": "10", "status": "Completed", "time": "2024-02-15" } },
+    { "id": "R-10", "label": "R", "name": "Goods Issue", "attributes": { "doc_no": "4900000001", "item": "10", "status": "Completed", "value": 196175656, "time": "2024-02-16" } },
+    { "id": "M-10", "label": "M", "name": "Invoice", "attributes": { "doc_no": "0090000001", "item": "10", "status": "Completed", "value": 2920000, "time": "2024-02-17" } },
+    { "id": "E-10", "label": "E", "name": "Journal Entry", "attributes": { "doc_no": "0090000001", "item": "10", "status": "Cleared", "value": 582000000, "time": "2024-02-17" } },
+
+    { "id": "C-20", "label": "C", "name": "Sales Order", "attributes": { "doc_no": "0000000002", "item": "20", "material": "FERT002", "description": "SONATA", "status": "Completed", "value": 280000000, "time": "2024-03-01", "customer": "C0011", "region": "Busan" } },
+    { "id": "J-20", "label": "J", "name": "Outbound Delivery", "attributes": { "doc_no": "0080000002", "item": "20", "status": "Completed", "time": "2024-03-02" } },
+    { "id": "Q-20", "label": "Q", "name": "Picking Request", "attributes": { "doc_no": "20240302", "item": "20", "status": "Completed", "time": "2024-03-02" } },
+    { "id": "R-20", "label": "R", "name": "Goods Issue", "attributes": { "doc_no": "4900000002", "item": "20", "status": "Completed", "value": 180000000, "time": "2024-03-03" } },
+    { "id": "M-20", "label": "M", "name": "Invoice", "attributes": { "doc_no": "0090000002", "item": "20", "status": "Completed", "value": 2800000, "time": "2024-03-04" } },
+    { "id": "X-20", "label": "X", "name": "Cancel Invoice", "attributes": { "doc_no": "CX9000002", "item": "20", "status": "Completed", "time": "2024-03-05", "reason": "Return" } },
+    { "id": "B-20", "label": "B", "name": "Return Delivery", "attributes": { "doc_no": "RE8000002", "item": "20", "status": "Completed", "time": "2024-03-05" } },
+    { "id": "E-20", "label": "E", "name": "Journal Entry", "attributes": { "doc_no": "0090000002", "item": "20", "status": "Not Cleared", "value": 580000000, "time": "2024-03-05" } },
+
+    { "id": "C-30", "label": "C", "name": "Sales Order", "attributes": { "doc_no": "0000000003", "item": "10", "material": "FERT003", "description": "IONIQ", "status": "InProgress", "value": 350000000, "time": "2024-03-10", "customer": "C0020", "region": "Daegu" } },
+    { "id": "J-30", "label": "J", "name": "Outbound Delivery", "attributes": { "doc_no": "0080000003", "item": "10", "status": "InProgress", "time": "2024-03-11" } },
+    { "id": "R-30", "label": "R", "name": "Goods Issue", "attributes": { "doc_no": "4900000003", "item": "10", "status": "Pending", "value": 0, "time": "2024-03-12" } },
+
+    { "id": "C-40", "label": "C", "name": "Sales Order", "attributes": { "doc_no": "0000000004", "item": "10", "material": "COMP001", "description": "BATTERY PACK", "status": "Completed", "value": 58000000, "time": "2024-03-10", "customer": "C0030", "region": "Ulsan" } },
+    { "id": "J-40", "label": "J", "name": "Outbound Delivery", "attributes": { "doc_no": "0080000004", "item": "10", "status": "Completed", "time": "2024-03-11" } },
+    { "id": "R-40", "label": "R", "name": "Goods Issue", "attributes": { "doc_no": "4900000004", "item": "10", "status": "Completed", "value": 50000000, "time": "2024-03-12" } },
+    { "id": "M-40", "label": "M", "name": "Invoice", "attributes": { "doc_no": "0090000004", "item": "10", "status": "Completed", "value": 580000, "time": "2024-03-13" } },
+    { "id": "E-40", "label": "E", "name": "Journal Entry", "attributes": { "doc_no": "0090000004", "item": "10", "status": "Cleared", "value": 58000000, "time": "2024-03-13" } },
+
+    { "id": "C-50", "label": "C", "name": "Sales Order", "attributes": { "doc_no": "0000000005", "item": "10", "material": "FERT005", "description": "GENESIS", "status": "Completed", "value": 520000000, "time": "2024-03-20", "customer": "C0040", "region": "Seoul" } },
+    { "id": "J-50", "label": "J", "name": "Outbound Delivery", "attributes": { "doc_no": "0080000005", "item": "10", "status": "Completed", "time": "2024-03-21" } },
+    { "id": "Q-50", "label": "Q", "name": "Picking Request", "attributes": { "doc_no": "20240321", "item": "10", "status": "Completed", "time": "2024-03-21" } },
+    { "id": "R-50", "label": "R", "name": "Goods Issue", "attributes": { "doc_no": "4900000005", "item": "10", "status": "Completed", "value": 450000000, "time": "2024-03-22" } },
+    { "id": "M-50", "label": "M", "name": "Invoice", "attributes": { "doc_no": "0090000005", "item": "10", "status": "Completed", "value": 5200000, "time": "2024-03-23" } },
+    { "id": "E-50", "label": "E", "name": "Journal Entry", "attributes": { "doc_no": "0090000005", "item": "10", "status": "Cleared", "value": 520000000, "time": "2024-03-23" } }
+  ],
+
+  "edges": [
+    { "source": "C-10", "target": "J-10", "label": "C→J" },
+    { "source": "J-10", "target": "Q-10", "label": "J→Q" },
+    { "source": "Q-10", "target": "R-10", "label": "Q→R" },
+    { "source": "R-10", "target": "M-10", "label": "R→M" },
+    { "source": "M-10", "target": "E-10", "label": "M→E" },
+
+    { "source": "C-20", "target": "J-20", "label": "C→J" },
+    { "source": "J-20", "target": "Q-20", "label": "J→Q" },
+    { "source": "Q-20", "target": "R-20", "label": "Q→R" },
+    { "source": "R-20", "target": "M-20", "label": "R→M" },
+    { "source": "M-20", "target": "X-20", "label": "M→X" },
+    { "source": "J-20", "target": "B-20", "label": "Return from J" },
+    { "source": "X-20", "target": "E-20", "label": "X→E" },
+
+    { "source": "C-30", "target": "J-30", "label": "C→J" },
+    { "source": "J-30", "target": "R-30", "label": "J→R" },
+
+    { "source": "C-40", "target": "J-40", "label": "C→J (no picking)" },
+    { "source": "J-40", "target": "R-40", "label": "J→R" },
+    { "source": "R-40", "target": "M-40", "label": "R→M" },
+    { "source": "M-40", "target": "E-40", "label": "M→E" },
+
+    { "source": "C-50", "target": "J-50", "label": "C→J" },
+    { "source": "J-50", "target": "Q-50", "label": "J→Q" },
+    { "source": "Q-50", "target": "R-50", "label": "Q→R" },
+    { "source": "R-50", "target": "M-50", "label": "R→M" },
+    { "source": "M-50", "target": "E-50", "label": "M→E" }
+  ],
+
+  "filters": {
+    "available_filters": {
+      "label": ["C", "J", "Q", "R", "M", "X", "B", "E"],
+      "status": ["Completed", "InProgress", "Pending", "Cleared", "Not Cleared"],
+      "region": ["Seoul", "Busan", "Daegu", "Ulsan"],
+      "materials": ["FERT001", "FERT002", "FERT003", "COMP001", "FERT005"],
+      "customers": ["C0010", "C0011", "C0020", "C0030", "C0040"]
+    },
+    "example_queries": {
+
+    }
+  }
+}

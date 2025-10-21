@@ -1,0 +1,5 @@
+DB_NAME = 'doc_flow_db'
+DB_USER = 'llm_user'
+DB_PASSWORD = '1234'
+DB_HOST = '192.168.1.154'
+DB_PORT = '8004'
